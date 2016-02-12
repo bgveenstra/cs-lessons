@@ -49,7 +49,8 @@ https://www.recurse.com/blog/7-understanding-c-by-learning-assembly
 
 - Predict the result of logical operations (AND, NOT, OR) on boolean values. 
 - Create and run programs in JavaScript or Ruby. 
-- Distinguish among different data types. 
+- Distinguish among different data types.
+- Define "high-level" and "low-level" programming languages and give examples of each. 
 
 
 ## Computers 
@@ -64,22 +65,27 @@ Modern computers take in instructions and data and perform calculations on the d
 ![computer block diagram - input, output, and memory connected to processor](http://onlinemca.com/mca_course/kurukshetra_university/semester1/c/img_c/comp_block_diagram.png)
 
 
-You're already familiar with a few input and output devices. If you've shopped for a computer recently, you've also heard information about computers' memory and processor specifics in product information. 
+You're already familiar with a few input and output devices. If you've shopped for a computer recently, you've also heard information about computers' memory and processor loadouts. 
 
 
 
 
-## Memory
+
 
 ### Bits and Binary Notation
 
+Let's look at **how the computer "sees" and stores information**.
+
 Computers store information in binary notation, as series of `1`s and `0`s called bits.  Think about what how much information one bit can hold.  
 
-Pair up and discuss: 
+Pair up for 30 seconds and discuss: 
 
 1. ... would you be able to tell someone whether you walked to class this morning with only bit (one `0` or `1`)? 
 
 1. ... could you tell someone your birthday with only one bit? 
+
+--
+
 
 <details>   
   <summary>How many different answers or alternatives can one bit represent?</summary>   
@@ -93,6 +99,8 @@ Because bits don't hold much information, programmers think about them in groups
 <!--  <summary>How many different combinations of `1`s and `0`s are possible in a byte?</summary>-->
 <!--   <p> 2<sup>8</sup>, or 256</p>-->
 <!--</details> -->
+
+**Bonus: Information Encoding**
 
 ASCII encoding uses seven bits to represent each character. That only allows for 128 different codes, meaning 128 different characters. Digits and English letters take up half that!  Because of ASCII's limited range, it's been replaced by encodings that can use more bits to represent each character, like UTF-8 (which you've probably written many times in your HTML - `<meta charset="UTF-8">`).  UTF-8 can encode languages that aren't English! Yay!
 
@@ -135,58 +143,99 @@ Binary, hexadecimal, and our normal decimal representations are all just differe
 
 <!--A boolean operator you may not know of is `XOR`. It's a lot like `OR`, except `a XOR b` is only true if exactly one of a or b is true.  If both a and b are true, or if both are false, `a XOR b` is false.   So `1010 XOR 0011` would give `1001`.-->
 
-### Memory: Where Bits Live
+##Memory
 
-All of the bits of data and instructions your computer uses are stored in what's called the computer's "memory."  That's important to realize - every peice of information used in calculations, and the instructions the computer uses for the calculations themselves, are stored in the computer's memory. The actual act of doing those calculations happens in the processor, but all of the information required has to exist in memory first. We'll talk more about the processor in a few minutes.
+All of the bits of data and instructions your computer uses are stored in what's called the computer's "memory."  That's important to realize - every peice of information used in calculations, and the instructions the computer uses for the calculations themselves, are stored in the computer's memory. 
 
-There are different kinds of memory, which mostly influence fiscal cost of the memory and how quickly the computer can access data stored on them. 
+You can think of your computer's memory as a giant city - in fact, we refer to the location in memory where some information is stored as that information's "memory address."
 
-![chart of memory types: size, cost, and access speed](https://cloud.githubusercontent.com/assets/3254910/12181035/b55fae34-b534-11e5-8f86-18b111d0b3ef.png)  
+### Main Types of Memory
 
-Lower levels usually provide more storage and cost less per unit of space, but for each level lower, time required to access data stored in that level increases. Reading or writing to a hard disk can be orders of magnitude slower than reading or writing "from memory".  With current technology, it can be faster to get data from a different computer in a local network (or even over the internet) than to read from a hard disk. 
-
- Most modern personal computer hard drives can store hundreds of gigabytes or even a few terabytes, and most RAM is sold in 4-, 8-, or 16-gigabyte "sticks."
-
-* A single character can be stored in a byte or two of memory. 
-* A small text file is often a few kilobytes long.  
-* An average music MP3 file would be a few megabytes.
-* DVDs are usually a few gigabytes.  
-* A terabyte is enough to hold about 2000 hours of good quality audio.  
-* A petabyte is about three month's worth of tweets - for everyone using twitter!  
+Some information in a computer's memory persists after the computer is turned off; this is mostly stored on the hard disk drive or ssd. Solid state disks (SSDs) are faster than hard disks because hard disks literally have to wait for a disk to spin into the right position to read or write data!  These persistent memory stores are like the computer's "long-term" memory.
 
 <img src="http://www.oceantechonline.com/wp-content/uploads/2013/04/hard-drive1.png" alt="hard disk drive" width="25%">
+*a hard disk drive*
+
+Some kinds of memory clear their information when the computer is turned off. The example talked about most often is RAM, which stands for "random access memory."  That's the computer's "short-term memory." It's faster for a computer to access information from RAM than from either a hard disk drive or ssd.
 
 <img src="http://www.nemixcorp.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/8/184_pin_eccx2-a.jpg" width="30%">
+*sticks of RAM*
+
+<details>
+<summary> Do you think the following are stored "on disk" or in RAM: the code for your computer's operating system, an array you create in the Chrome developer tools console, a file you download?</summary>
+<ul>
+<li>The code for your operating system had better persist after you restart your computer! That should be on disk.</li>
+<li>An array you create in the Chrome developer tools won't even be there if you restart Chrome. It must be stored in RAM. </li>
+<li>A file you download will be there the next time you start your computer, so it must be stored on disk. </li>
+</ul>
+
+</details>
+
+### Units of Memory
+
+Most modern personal computer hard drives can store hundreds of gigabytes or even a few terabytes, and most RAM is sold in 4-, 8-, or 16-gigabyte "sticks."  
+
+**Bonus: Memory Size Requriements**
+	
+	* A single character like "a" or "&#x266b;" can be stored in a few bytes of memory. 
+	* A small text file is often a few kilobytes long.  
+	* An average music MP3 file would be a few megabytes.
+	* DVDs are usually a few gigabytes.  
+	* A terabyte is enough to hold about 2000 hours of good quality audio.  
+	* A petabyte is about three month's worth of tweets - for everyone using twitter!  
 
 
-You can think of your computer's memory as a giant city - in fact, we refer to the location in memory where some information is stored as that information's memory address. When you create a variable, some amount of space in memory is reserved for that variable; this is called memory allocation. When a variable is no longer needed, the space should be freed; this is called deallocation.  Most high-level programming lanaguages handle memory allocation and deallocation for us. Programming lanaguges that automatically handle getting rid of old data (for instance, after it goes out of scope) are doing "garbage collection" for us.  
+### The Computer's View of Memory
+
+When you create a variable, some amount of space in memory is reserved for that variable, a place in the memory "city" where that information can live.  This is called memory allocation. When a variable is no longer needed, the space should be freed; this is called memory deallocation. Most high-level programming languages handle memory allocation and deallocation for us. 
+
+<!--Programming lanaguges that automatically handle getting rid of old data (for instance, after it goes out of scope) are doing "garbage collection" for us.  -->
+
+<!--<details>-->
+<!--<summary>Is JavaScript garbage collected?</summary>-->
+<!--<p>We've created JavaScript variables, but we haven't had to carefully destroy them when we're done using them.  JavaScript **is** a garbage collected language.</p>-->
+<!--</details>-->
+
+
+
 
 
 ## Processors
 
-<img src="https://blazotech.files.wordpress.com/2011/05/1298865422-79.jpg" width="25%">
 
-Bits are transfered through the computer to support even the most basic of operations. In memory, they represent the data programs act upon as well as the programs themselves!  None of this information really has any effect until it's processed by a computer's processor(s). The processor is the brain of the computer.
+Processors perform all of the operations that take place within your computer.  The processor is the "brain" of the computer!
 
-Processors perform all of the operations that take place within your computer according to a set of instructions.  A processor is just a small group of computer chips. You can think of the processor as having a few main important parts:
-
- * the arithmic logic unit performs operations
- * the registers are tiny storage spaces for the data beging operated on
- * the cache is another small area of memory for data that's likely to be accessed again soon. 
+<img src="https://blazotech.files.wordpress.com/2011/05/1298865422-79.jpg" width="25%"> 
+*a processor*
 
 
-<details>   
-  <summary>How many different combinations of `1`s and `0`s are possible in a 32-bit word?</summary>   
-   <p> 2<sup>32</sup>, or 4294967296</p>   
-</details>   
+ You can think of the processor as having a few main important parts:
+
+ * the arithmetic logic unit, which performs arithmetic and logical operations on binary data
+ * the registers, which are tiny storage spaces for the data beging operated on
+ * the cache, which is another small area of memory for data that's likely to be accessed again soon
 
 
 The number of bits a processor can work on at one time is related to its "word size." Common word sizes are 32 bits or 64 bits, which is why you'll mostly hear about 32bit or 64bit processors.  
 
 
+
+<!--<details>   -->
+<!--  <summary>How many different combinations of `1`s and `0`s are possible in a 32-bit word?</summary>   -->
+<!--   <p> 2<sup>32</sup>, or 4294967296</p>   -->
+<!--</details>   -->
+
+
+Processors act on data stored in memory and follow instructions stored in memory. Where that information is stored has an impact on how quickly the processor can access and act on it.
+
+![chart of memory types: size, cost, and access speed](https://cloud.githubusercontent.com/assets/3254910/12181035/b55fae34-b534-11e5-8f86-18b111d0b3ef.png)  
+
+
+
+
 ### Processes and Threads 
 
-Each instance of a running program is called a process; a processor can only work on one process at once. To see a list of processes running on your computer, enter the `top` command in your terminal. 
+Each instance of a running program is called a process; a processor can only work on one process at once. To see a list of processes running on your computer, enter the `top` command in your terminal. Seriously, do it now.
 
 A single processor can only work on one thing at a time. Users want to be able to do more than one thing at a time with their computers. There are a few approaches to fixing this problem. First, the processor changes which process it's working on avoid any downtime. If one process needs to wait for user input, for example, the computer will work on a different process for a while to fill that time.  Many computers also have "dual" or "quad" core processors, which is like having 2 or 4 processors. Most modern architectures also allow for threading, where process are divided into smaller "threads", individual tasks that the processor focuses on for a short amount of time.
 
@@ -197,7 +246,7 @@ A single processor can only work on one thing at a time. Users want to be able t
 
 ## Interpreters and Compilers
 
-If the computer works with 0s and 1s, how does it  know what to do when we give it a line of code like `var speed = 0;`?
+If the processor works with 0s and 1s, how does it know what to do when we give it a line of code like `var speed = 50;`?
 
 
 Very early in the history of computer development, Assembly languages were created to manipulate computer memory and operations in a way that's possible for humans to read, instead of just 1s and 0s.  How human-readable they are depends on your level of training. There is usually a one-to-one correspondance between a line of code in assembly and an operation carried out by the machine, so they still look a lot like code and not at all like English.
@@ -271,3 +320,7 @@ Discuss the following questions with a partner:
 1. What is a "scripting lanauage"? Give an example.
 
 1. What do we mean by "high-level" and "low-level" languages? Give an example of each. 
+
+1. How many values can you represent with one bit?  One decimal digit? One letter?  
+
+1. How many values can you represent with a sequence of eight bits?  How about with a sequence of eight letters?
