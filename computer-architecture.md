@@ -73,7 +73,18 @@ You're already familiar with a few input and output devices, so we'll go into me
 
 ### Bits and Binary Notation
 
-Computers store information in binary notation, as series of `1`s and `0`s called bits.  Think about what how much information one bit can hold.  Would you be able to tell someone whether you walked to class this morning with only one `0` or `1`? Could you tell someone your birthday with only one `0` or `1`?  What data type do bits remind you of?
+Computers store information in binary notation, as series of `1`s and `0`s called bits.  Think about what how much information one bit can hold.  
+
+Pair up and discuss: 
+
+1. ... would you be able to tell someone whether you walked to class this morning with only bit (one `0` or `1`)? 
+
+1. ... could you tell someone your birthday with only one bit? 
+
+<details>   
+  <summary>How many different answers or alternatives can one bit represent?</summary>   
+   <p>Two! You may have come up with some cool schemes to pass information.  Remember computers aren't as clever as people! From a computer's perspective, one bit can only represent two possibilities. </p>   
+</details>   
 
 
 Because bits don't hold much information, programmers think about them in groups.  "Bytes" are groups of 8 bits, like `01000111` and `01000001`.
@@ -83,31 +94,34 @@ Because bits don't hold much information, programmers think about them in groups
    <p> 2<sup>8</sup>, or 256</p>
 </details> 
 
-ASCII encoding uses seven bits to represent each character. That only allows for 128 different codes, meaning 128 different characters. Digits and English letters take up half that!  Because of ASCII's limited range, it's been replaced by encodings that can use more bits to represent each character, like UTF-8 (which you've probably written many times in your HTML - `<meta charset="UTF-8">`).
+ASCII encoding uses seven bits to represent each character. That only allows for 128 different codes, meaning 128 different characters. Digits and English letters take up half that!  Because of ASCII's limited range, it's been replaced by encodings that can use more bits to represent each character, like UTF-8 (which you've probably written many times in your HTML - `<meta charset="UTF-8">`).  UTF-8 can encode languages that aren't English! Yay!
+
+![ASCII encoding table](http://web.alfredstate.edu/weimandn/miscellaneous/ascii/ASCII%20Conversion%20Chart.gif)
 
 
-#### Practice with Binary Numbers
+<!--#### Practice with Binary Numbers-->
 
 
-Bit manipulation describes operations that act on binary numbers.  You can perform common arithmetic on binary numbers. There's also a specail name for "bit shifting" values left or right. This either adds a `0` at the end of the number for left shift ( `<<`), which is equivalent to multiplying by 2, or removes the last binary digit for right shift (`>>`), which is almost like diving by two (why almost?).  
+<!--Bit manipulation describes operations that act on binary numbers.  You can perform common arithmetic on binary numbers. There's also a specail name for "bit shifting" values left or right. This either adds a `0` at the end of the number for left shift ( `<<`), which is equivalent to multiplying by 2, or removes the last binary digit for right shift (`>>`), which is almost like diving by two (why almost?).  -->
 
-As sequences of 0s and 1s, binary numbers can also be acted on by logical operators, if you consider each `1` like a `true` and each `0` like a `false`.  For example, `NOT 101` would give `010`.   `1011 AND 1101` would give `1001`. 
+<!--As sequences of 0s and 1s, binary numbers can also be acted on by logical operators, if you consider each `1` like a `true` and each `0` like a `false`.  For example, `NOT 101` would give `010`.   `1011 AND 1101` would give `1001`. -->
 
-<details> 
-  <summary>What other operations do you think can act on binary numbers?</summary>
-   <p> We've seen `AND` and `OR`.</p>
-</details> 
+<!--<details> -->
+<!--  <summary>What other operations do you think can act on binary numbers?</summary>-->
+<!--   <p> We've seen `AND` and `OR`.</p>-->
+<!--</details> -->
 
-A boolean operator you may not know of is `XOR`. It's a lot like `OR`, except `a XOR b` is only true if exactly one of a or b is true.  If both a and b are true, or if both are false, `a XOR b` is false.   So `1010 XOR 0011` would give `1001`.
+<!--A boolean operator you may not know of is `XOR`. It's a lot like `OR`, except `a XOR b` is only true if exactly one of a or b is true.  If both a and b are true, or if both are false, `a XOR b` is false.   So `1010 XOR 0011` would give `1001`.-->
 
-### Where the Bits Live
+### Memory: Where Bits Live
 
-All of the bits of data and instructions your computer uses are stored in what's called the computer's "memory." There are different kinds of memory - differences in the types of memory mostly influence cost and how quickly the computer can access data stored on them. So sometimes we have to consider levels of memory: the processor's tiny but lightning-fast memory store, the cache, Random Access Memory, a hard drive or ssd, and any external drives. 
+All of the bits of data and instructions your computer uses are stored in what's called the computer's "memory."  That's important to realize - every peice of information used in calculations, and the instructions the computer uses for the calculations themselves, are stored in the computer's memory. The actual act of doing those calculations happens in the processor, but all of the information required has to exist in memory first. We'll talk more about the processor in a few minutes.
+
+There are different kinds of memory, which mostly influence fiscal cost of the memory and how quickly the computer can access data stored on them. 
 
 ![chart of memory types: size, cost, and access speed](https://cloud.githubusercontent.com/assets/3254910/12181035/b55fae34-b534-11e5-8f86-18b111d0b3ef.png)  
 
 Lower levels usually provide more storage and cost less per unit of space, but for each level lower, time required to access data stored in that level increases. Reading or writing to a hard disk can be orders of magnitude slower than reading or writing "from memory".  With current technology, it can be faster to get data from a different computer in a local network (or even over the internet) than to read from a hard disk. 
-
 
  Most modern personal computer hard drives can store hundreds of gigabytes or even a few terabytes, and most RAM is sold in 4-, 8-, or 16-gigabyte "sticks."
 
@@ -212,8 +226,6 @@ Here's a JavaScript analogue:
 
 Compiling translates source code into a lower-level language, usually into an assembly language or machine code that can be run directly by the processor. Programming in a compiled language requires an extra step between writing and running code; you literally have to compile the code into a language the machine can read.  This creates extra delay as you have to compile code before running it, but the compiled code runs very fast because the machine can run it very directly. 
 
-
-
 With interpreted languages like we've been using, the source code is translated a little at a time in real time as it's run, instead of all at once before it is run.  The code isn't translated directly all the way down to the machine code level. It's translated to an intermediate format and then run in a virtual machine -- a simulated computer within the actual computer. The virtual machine has precompiled chunks of code that map to machine code.  
 
 Programmers working with compiled languages have to use different compilers for the different systems they work on - Windows, Ubuntu, and OS X, for example. They have to consciously find and use the correct compiler.   When working with interpreted languages, the same code can run on many systems. The effort of translating that code to machine language falls to the virtual machine, where the programmer doesn't have to worry about it at all.
@@ -223,8 +235,6 @@ One popular compiled language used in web development is Java.
 ## Static and Dynamic Typing
 
 When a language makes you specify the type of a variable and does not allow you to change it, that's called static typing.  We haven't had to specify the types of variables in JavaScript or Ruby, and we can change the type of a variable - this is dynamic typing! Interpreted and compiled languages can both be statically or dynamically typed.
-
-
 
 ## Practice
 
