@@ -246,10 +246,12 @@ A single processor can only work on one thing at a time. Users want to be able t
 
 ## Interpreters and Compilers
 
-If the processor works with 0s and 1s, how does it know what to do when we give it a line of code like `var speed = 50;`?
+If the processor works with 0s and 1s, how does it know what to do when we give it a line of code like `var speed = 50;`? The code we write has to be translated to instructions the processor can carry out. 
 
 
-Very early in the history of computer development, Assembly languages were created to manipulate computer memory and operations in a way that's possible for humans to read, instead of just 1s and 0s.  How human-readable they are depends on your level of training. There is usually a one-to-one correspondance between a line of code in assembly and an operation carried out by the machine, so they still look a lot like code and not at all like English.
+### Low-level Programming Languages
+
+Very early in the history of computer development, Assembly languages were created to manipulate computer memory and operations in a way that's possible for humans to read, instead of just 1s and 0s.  How human-readable they are depends on your level of training. There is usually a one-to-one correspondance between a line of code in assembly and an operation carried out by the processor, so they still look a lot like code and not at all like English.
 
 Here's an example of some assembly commands and debugging information. The debugging information on the left hand side includes the name of the file that was run (`test`) and the memory address where the beginning of the function started. The assembly commands are in the middle, between the colons and the semicolons. The parts after the colons are comments.
 
@@ -265,7 +267,7 @@ test[0x100000f97] <+7>: retq                ; jumps back to the return address (
 ```
 
 
-Can you identify what the code is doing?  The %rbp, %rsp, and %eax are registers - data storage locations directly in the CPU. It's very fast for a computer to access the processor's registers, and they usually store the operands for an arithmetic or logic operation being carried out. The %rbp and %rsp registers have special purposes; they help the computer keep track of where in the call stack the current operations are being carried out (we won't go into this too much, but it's the basis for how control flow works).
+Can you identify what the code is doing?  The %rbp, %rsp, and %eax are registers - data storage locations directly in the processor. It's very fast for a computer to access the processor's registers, and they usually store the operands for an arithmetic or logic operation being carried out. The %rbp and %rsp registers have special purposes; they help the computer keep track of where in the call stack the current operations are being carried out (we won't go into this too much, but it's the basis for how control flow works).
 
 
 Here's that code translated into a low-level programming language called C:
@@ -279,7 +281,7 @@ int main(){
 }
 ```
 
-What do you think is happening in the code samples above? What do you think `int` means? What data types are x, y, and main?
+Line by line, what do you think is happening in the code samples above? What do you think `int` means? What data types are x, y, and main?
 
 Here's a JavaScript analogue:
 
@@ -301,7 +303,7 @@ With interpreted languages like we've been using, the source code is translated 
 
 Programmers working with compiled languages have to use different compilers for the different systems they work on - Windows, Ubuntu, and OS X, for example. They have to consciously find and use the correct compiler.   When working with interpreted languages, the same code can run on many systems. The effort of translating that code to machine language falls to the virtual machine, where the programmer doesn't have to worry about it at all.
 
-One popular compiled language used in web development is Java. 
+One popular compiled language used in web development is Java, which compiles to a special "bytecode" instead of to assembly. 
 
 ## Static and Dynamic Typing
 
