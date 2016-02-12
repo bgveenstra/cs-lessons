@@ -89,15 +89,37 @@ Pair up and discuss:
 
 Because bits don't hold much information, programmers think about them in groups.  "Bytes" are groups of 8 bits, like `01000111` and `01000001`.
 
-<details> 
-  <summary>How many different combinations of `1`s and `0`s are possible in a byte?</summary>
-   <p> 2<sup>8</sup>, or 256</p>
-</details> 
+<!--<details> -->
+<!--  <summary>How many different combinations of `1`s and `0`s are possible in a byte?</summary>-->
+<!--   <p> 2<sup>8</sup>, or 256</p>-->
+<!--</details> -->
 
 ASCII encoding uses seven bits to represent each character. That only allows for 128 different codes, meaning 128 different characters. Digits and English letters take up half that!  Because of ASCII's limited range, it's been replaced by encodings that can use more bits to represent each character, like UTF-8 (which you've probably written many times in your HTML - `<meta charset="UTF-8">`).  UTF-8 can encode languages that aren't English! Yay!
 
 ![ASCII encoding table](http://web.alfredstate.edu/weimandn/miscellaneous/ascii/ASCII%20Conversion%20Chart.gif)
 
+
+**Bonus: Hexadecimal Notation**
+
+The ASCII table above also has a column for the HEX or "hexadecimal" value associated with each character. The digits used for hexadecimal notation are [`0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `A`, `B`, `C`, `D`, `E`] which correspond to decimal values of 0 through 15. 
+
+
+<details>
+<summary>Where have you seen hex values used before?</summary>
+<p>One possibility is for hex color values in CSS</p>
+```css
+body {
+	color: "#ED86B4";
+}
+```
+</details>
+
+Binary, hexadecimal, and our normal decimal representations are all just different ways to look at the same numbers you're already familiar with.  If you'd like to learn more about this topic, it'll help to know that our normal decimal numbers are "base 10," binary numbers are "base 2," and hexadecimal numbers are "base 16." Octal numbers are less common. 
+
+<details>
+<summary>Just for fun... can you tell from the chart what the "base" of the octal numbers (in the OCT column) might be?</summary>
+<p>Octal numbers are base 8. The "base" of a number system tells how many digits it has. Looking at the chart, you'll notice the OCT column only uses the digits 0 through 7 -- 8 digits!</p>
+</details>
 
 <!--#### Practice with Binary Numbers-->
 
