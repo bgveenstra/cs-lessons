@@ -64,7 +64,7 @@ Modern computers take in instructions and data and perform calculations on the d
 ![computer block diagram - input, output, and memory connected to processor](http://onlinemca.com/mca_course/kurukshetra_university/semester1/c/img_c/comp_block_diagram.png)
 
 
-You're already familiar with a few input and output devices, so we'll go into memory and processors. 
+You're already familiar with a few input and output devices. If you've shopped for a computer recently, you've also heard information about computers' memory and processor specifics in product information. 
 
 
 
