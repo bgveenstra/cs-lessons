@@ -89,7 +89,7 @@ Pair up for 30 seconds and discuss:
 
 <details>   
   <summary>How many different answers or alternatives can one bit represent?</summary>   
-   <p>Two! You may have come up with some cool schemes to pass information.  Remember computers aren't as clever as people! From a computer's perspective, one bit can only represent two possibilities. </p>   
+   * Two! You may have come up with some cool schemes to pass information.  Remember computers aren't as clever as people! From a computer's perspective, one bit can only represent two possibilities.  
 </details>   
 
 
