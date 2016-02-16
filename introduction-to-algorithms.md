@@ -25,17 +25,20 @@ competencies: Programming, Computer Science
 - Explain how computers store information and how programs manipulate data stored in memory.   
 
 
-  ##Algorithm Efficiency and Big-O Notation
+##Algorithm Efficiency and Big-O Notation
 
 
-  Why is it useful to follow established design patterns? How has the work of other web developers or programmers helped you in the past?
+Discuss the following in small groups:
+
+* Why is it useful to follow established design patterns? 
+
+* How has the work of other developers helped you in the past?
 
 ##What is an algorithm?
 
-
 A set of instructions to find the solution to a problem.
 
-Note: we use code to implement algoritms, but algorithms don't have to be written in code.
+Note: we use code to *implement* algoritms, but algorithms don't have to be expressed in code. It's usually better to talk through or write out the general strategy of an algorithm before trying to code it.
 
 ##What is efficiency?
 
@@ -44,18 +47,35 @@ Time efficiency helps us predict how long it could take a particular algorithm t
 ##Why study algorithms and efficiency?
 
 * Understanding algorithms let us reuse knowledge from the field.
-* Better-performing algorithms can enhance the user experience.
-* Better-performing algorithms can save companies money.
-* Algorithms and algorithm analysis are shared languages developers use to talk programs (especially in INTERVIEWS!).
+
+* Better-performing algorithms can enhance the user experience by decreasing wait times or improving results.
+
+* Better-performing algorithms can save companies money by reducing equipment needs.
+
+* Algorithms and algorithm analysis are an important part of the shared language developers use to talk about programs (especially in **INTERVIEWS!**).
 
 
 ##Big O notation
+
+Big O notation gives us a simplified way to talk about the  time and space requirements of an algorithm (often called time and space "complexity").  
 
 1. Ask yourself: In the worst case scenario, about how many calculations does your algorithm do?
 2. Phrase the answer in terms of the size of the input.  
 3. Ignore constant multiples or smaller things added on.
 
-We will consider all mathematical operations constant time or **O(1)** operations: `+`, `-`, `*`, `/`, and `%`.
+
+
+If we tried to get a 100% accurate picture of how long an algorithm would take, the analysis would be so complex it wouldn't be useful at all.  So Big O notation makes step one above WAY easier by pretending computers are simpler than they actually are. Big O uses the RAM model of computation and assumes all computers ares simple "Random-Access Machines."  (Don't confuse this with Random Access Memory, the RAM memory inside actual computers.) This simplified model means that instead of answers like "This algorithm will do exactly 37 operations for each bit of data in the input, plus 45 to calculate an if statement, plus..." we get answers like "This algorithm is O(n)".  Big O notation usually looks like this:  O(1), O(log(n)), O(n), O(n*log(n)), O(n<sup>2</sup>), O(2<sup>n</sup>)...  where `n` is the size or number of inputs.  It's important to remember that Big O notation gives an upper limit for how long or how much space an algorithm could take.  It's like a "less than or equal to":  
+
+An algorithm is O(n) if (and only if) the time it takes to complete the algorithm is **less than or equal to** some constant multiple of the number of inputs.  
+
+### Big O Guidelines
+
+#### O(1) operations
+
+To say an algorithm takes O(1) time means no matter how big the input(s) are, the computer will do basically same amount of work to perform the algorithm on them.
+
+We will consider all mathematical operations on normal-size numbers or characters O(1).  In Big O notation, these are **O(1)** operations: `+`, `-`, `*`, `/`, and `%`.  
 
 ```js
 function add(a,b){
@@ -63,7 +83,13 @@ function add(a,b){
 }
 ```
 
-Functions containing for loops that go through the whole input are generally implementing at least linear time or **O(n)** algorithms.
+We also assume that comparisons ( `<` ) are constant time operations, and that handling for `if`s and `returns` is pretty much constant time too.
+
+#### O(n)
+
+To say an algorithm takes O(n) time means that the computer will do more work to perform the algorithm if the inputs are larger or if there are more inputs -- *and* that the increase in work done mirrors the incresase in the size or number of inputs.
+
+Functions containing loops that go through the whole input are generally implementing at least **O(n)** algorithms.
 
 ```js
 function addAll(numArray){
@@ -75,7 +101,15 @@ function addAll(numArray){
 }
 ```
 
-Logarithm terms in Big O notation (like O(log(n)) usually come from recursive functions that divide the problem into smaller subproblems. Well see more about recursive algorithms as we go.
+####O(log(n)) or O(n*log(n))
+
+Logarithm terms in Big O notation usually come from recursive functions that divide the problem into smaller subproblems.
+
+<!--@TODO: more!-->
+
+
+
+####Combinations
 
 Almost everything else is composed of combinations of those. For example, if a for loop has more complex operations inside it, time complexity is usually higher.
 
@@ -98,17 +132,17 @@ Graph: how the number of operations (time) grows with the number of input
 elements for various orders of complexity   
 ![time complexity graph from daveperrett.com](http://www.daveperrett.com/images/articles/2010-12-07-comp-sci-101-big-o-notation/Time_Complexity.png)
 
-###Bonus: Related Notations
+#####Related Notations
 
 Big O is the most commonly-used notations for comparing functions in computer science, but there are others:
 
 | notation | analogy |
 | :----: | :----: |
-| **f(n) = O(g(n))** | **<=** |
-| f(n) = o(g(n)) |  <= |
-| f(n) = Θ(g(n)) | = |
-| f(n) = Ω(g(n)) | > |
-| f(n) =  ω(g(n)) | < |
+| algorithm is o(g(n)) | time < constant * g(n) |
+| **algorithm is O(g(n))** | **time <= constant * g(n)** |
+| algorithm is Θ(g(n)) | time == constant * g(n) |
+| algorithm is Ω(g(n)) | time >= constant * g(n) |
+| algorithm is ω(g(n)) | time > constant * g(n) |
 
 
 ##Resources
@@ -133,7 +167,7 @@ Big O is the most commonly-used notations for comparing functions in computer sc
 
  Have one student (or a coinstructor) pick any number, not worrying about whether it's on one of the cards or not. If you're picking the number, choose one next to the middle (but not in the middle)!
 
- Tell the students they are an array, and ask for one way to search through the array for the target number.  Hopefully you'll get a brute force suggestion.  Starting with index 0 (the student with the lowest number), have the students execute a brute force search for the number.  Especially if the number was early in the array, ask how many students they'd have to check for a number that isn't in the array. They should realize it would require looking at everyone's number in order. 
+Tell the students they are an array, and ask for one way to search through the array for the target number.  Hopefully you'll get a brute force suggestion.  Starting with index 0 (the student with the lowest number), have the students execute a brute force search for the number.  Especially if the number was early in the array, ask how many students they'd have to check for a number that isn't in the array. They should realize it would require looking at everyone's number in order. 
 
 Tell them that since they're sorted they can do a little better. Ask for suggestions, and move forward with finding the middle of the array.  Ask three quesitons. For example, if the target is 43: Are you 43? Are you greater than 43? Are you less than 43?   "Discard" the students whose numbers are in the wrong half of the array.  Ask how to move forward now, and carry on until you find the target or figure out it's not in the array.  
 
