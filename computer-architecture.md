@@ -251,78 +251,92 @@ If the processor works with 0s and 1s, how does it know what to do when we give 
 
 ### Low-level Programming Languages
 
-Very early in the history of computer development, Assembly languages were created to manipulate computer memory and operations in a way that's possible for humans to read, instead of just 1s and 0s.  How human-readable they are depends on your level of training. There is usually a one-to-one correspondance between a line of code in assembly and an operation carried out by the processor, so they still look a lot like code and not at all like English.
+A lot of work of computer science since the mid-1900s has focused on letting humans write human-readable code.  Assembly languages are very low-level programming languages. This means it's very close to machine code; it's a slightly more readable layer just on top of 1s and 0s. There is usually exactly one command in assembly for every possible operation the processor can do. 
 
-Here's an example of some assembly commands and debugging information. The debugging information on the left hand side includes the name of the file that was run (`test`) and the memory address where the beginning of the function started. The assembly commands are in the middle, between the colons and the semicolons. The parts after the colons are comments.
+Here's an example of some assembly commands:
+
+<!--```assembly-->
+<!--; memory address        ; assembly command & operands-->
+<!--test[0x100000f90] <+0>: pushq  %rbp         -->
+<!--test[0x100000f91] <+1>: movq   %rsp, %rbp   -->
+<!--test[0x100000f94] <+4>: xorl   %eax, %eax  -->
+<!--test[0x100000f96] <+6>: popq   %rbp	    -->
+<!--test[0x100000f97] <+7>: retq                -->
+<!--```-->
 
 ```assembly
-test`main:
-test[0x100000f90] <+0>: pushq  %rbp         ; these first two instructions keep track of  
-test[0x100000f91] <+1>: movq   %rsp, %rbp   ;  ... where the function starts
-test[0x100000f94] <+4>: xorl   %eax, %eax   ; does a logical XOR on the same thing twice - whatever's stored in %eax
-					    ;  ... and stores the result in %eax - ensuring %eax is now 0
-					    ;  ... the l in xorl just stands for "long" integer data type
-test[0x100000f96] <+6>: popq   %rbp	    ; pops the stored value of the base pointer back into the base pointer
-test[0x100000f97] <+7>: retq                ; jumps back to the return address (which was also stored in call stack)
+PUSHQ    %rbp
+MOVQ     %rsp, %rbp
+XORL     %eax, %eax
+POPQ     %rbp
+RETQ
 ```
 
+<!--The first two lines keep track of where the funciton starts. Then the next line sets %eax to 0.  Finally, the last two lines cause the processor to return to whatever it was doing.-->
 
-Can you identify what the code is doing?  The %rbp, %rsp, and %eax are registers - data storage locations directly in the processor. It's very fast for a computer to access the processor's registers, and they usually store the operands for an arithmetic or logic operation being carried out. The %rbp and %rsp registers have special purposes; they help the computer keep track of where in the call stack the current operations are being carried out (we won't go into this too much, but it's the basis for how control flow works).
+Can you guess what the code is doing?  The %rbp, %rsp, and %eax are registers - data storage locations directly in the processor. It's very fast for a computer to access the processor's registers, and they usually store the operands for an arithmetic or logic operation being carried out. The %rbp and %rsp registers have special purposes; they help the computer keep track of where in the call stack the current operations are being carried out (we won't go into this too much, but it's the basis for how control flow works).
 
 
-Here's that code translated into a low-level programming language called C:
+Assembly languages are basically the lowest level languages possible.  Here's very similar code expressed in a programming language called C. C came after assembly languages and was specifically designed to be easier for humans to read. It's a higher-level programming language than assembly, but it's still possible to translate pretty directly to processor instructions. 
 
 ```c
-/* test.c */
 int main(){
-  int a = 16;
-  int b = 32;
+  int x = 8; // this line didn't happen in the assmebly!
   return 0;
 }
 ```
 
-Line by line, what do you think is happening in the code samples above? What do you think `int` means? What data types are x, y, and main?
+Line by line, what do you think is happening in the C code sample above? 
 
-Here's a JavaScript analogue:
+<details>
+  <summary>What do you think `int` means?</summary>
+  In C, `int` stands for "integer."
+</details> 
+
+<details>
+  <summary>What data types are `x` and `main`?</summary>
+  `x` is an integer, and `main` is a function. In C, we specify the "return type" of a function, which is why it's defined `int main` instead of `def main` or `function main`.
+</details> 
+
+
+Note: Static and Dynamic Typing
+
+C is a statically typed language, meaning it makes sure types match (for operations like "hello" + 5) when the code is compiled. If you tried to compile a C file with `"hello" + 5` in it, the compiling step would give you an error. Most statically types languages make you specify the type of a variable and do not allow you to change it. Languages with dynamic typing only check types at runtime.  So in Ruby you'd get `TypeError: no implicit conversion of Fixnum into String` when you tried to *run* the code. 
+
+Here's one way that C function might look in JavaScript:
 
 ```js
-(function main(){
-  var a = 16;
-  var b = 32;
-  var c = a + b;
-  return c;
-})()
+function main(){
+  var x = 8;
+  return 0;
+}
 ```
+
+<details><summary>Is JavaScript typing static or dynamic?</summary>Dynamic!</details>
 
 
 ## Compilers and Interpreters
 
-Compiling translates source code into a lower-level language, usually into an assembly language or machine code that can be run directly by the processor. Programming in a compiled language requires an extra step between writing and running code; you literally have to compile the code into a language the machine can read.  This creates extra delay as you have to compile code before running it, but the compiled code runs very fast because the machine can run it very directly. 
+C is a "compiled language."   Compiling translates code from a higher-level language into a lower-level language, usually into an assembly language that can be run directly by the processor. Programming in a compiled language requires an extra step between writing and running code; you have to use a program called a compiler to compile your code before running it.  This creates extra delay, but the compiled version of the code runs fast because all the instructions are exactly as the processor expects. 
 
-With interpreted languages like we've been using, the source code is translated a little at a time in real time as it's run, instead of all at once before it is run.  The code isn't translated directly all the way down to the machine code level. It's translated to an intermediate format and then run in a virtual machine -- a simulated computer within the actual computer. The virtual machine has precompiled chunks of code that map to machine code.  
+JavaScript and Ruby are "interpreted languages." For interpreted languages, the source code still has to be translated so the computer can run it.  However, the source code is translated a little at a time as it's run, instead of all at once before it is run.  Also, the code isn't translated directly all the way down to the machine code level. It's translated to an intermediate format and then run in a virtual machine -- a simulated computer within the actual computer. The virtual machine has precompiled chunks of code that map to assembly code.  
 
 Programmers working with compiled languages have to use different compilers for the different systems they work on - Windows, Ubuntu, and OS X, for example. They have to consciously find and use the correct compiler.   When working with interpreted languages, the same code can run on many systems. The effort of translating that code to machine language falls to the virtual machine, where the programmer doesn't have to worry about it at all.
 
-One popular compiled language used in web development is Java, which compiles to a special "bytecode" instead of to assembly. 
+One popular compiled language used in web development is Java, which compiles to a special "bytecode" instead of to assembly. For more information on compiled and interpreted languages, check out the wikipedia articles on each!
 
-## Static and Dynamic Typing
-
-When a language makes you specify the type of a variable and does not allow you to change it, that's called static typing.  We haven't had to specify the types of variables in JavaScript or Ruby, and we can change the type of a variable - this is dynamic typing! Interpreted and compiled languages can both be statically or dynamically typed.
 
 ## Practice
 
-Discuss the following questions with a partner:
-
-1. Is JavaScript "garbage collected"?  How about Ruby?
-
-1. Does JavaScript have "static typing" or "dynamic typing"?  Ruby?
-
-1. Is JavaScript a "compiled language" or an "interpreted language"? What about Ruby?
-
-1. What is a "scripting lanauage"? Give an example.
-
-1. What do we mean by "high-level" and "low-level" languages? Give an example of each. 
 
 1. How many values can you represent with one bit?  One decimal digit? One letter?  
 
 1. How many values can you represent with a sequence of eight bits?  How about with a sequence of eight letters?
+
+1. What do we mean by "high-level" and "low-level" languages? Give an example of each. 
+
+1. What is a "scripting lanauage"? Give an example.
+
+1. Does JavaScript have "static typing" or "dynamic typing"? How do you explain the fact that in JavaScript "hello" + 5 is "hello5"?
+
+1. Is JavaScript a "compiled language" or an "interpreted language"? What about Ruby?
