@@ -8,7 +8,7 @@ creator:
 competencies: Programming, Computer Science
 ---
 
-# Introduction to Algorithms and Data Structures
+# Introduction to Algorithms 
 
 ### Objectives
 *After this lesson, students will be able to:*
@@ -21,8 +21,7 @@ competencies: Programming, Computer Science
 *Before this lesson, students should already be able to:*
 
 - Trace the flow of a program based on its code, including conditionals, loops, and function calls.   
-
-- Explain how computers store information and how programs manipulate data stored in memory.   
+- Interpret notation for exponents (a<sup>2</sup>) and logarithms (log<sub>2</sub>c).
 
 
 ##Algorithm Efficiency and Big-O Notation
@@ -145,49 +144,88 @@ Big O is the most commonly-used notations for comparing functions in computer sc
 | algorithm is ω(g(n)) | time > constant * g(n) |
 
 
-##Resources
+#### More Big O Resources
 
 * reading from [Interview Cake](https://www.interviewcake.com/article/big-o-notation-time-and-space-complexity)
 * <a href="http://bigocheatsheet.com" target="_blank">Big-O Cheat Sheet</a>
 * <a href="https://rob-bell.net/2009/06/a-beginners-guide-to-big-o-notation" target="_blank">A beginner's guide to Big O notation - Rob Bell</a>
 
+## Break!
 
 ## Algorithms
 
- - simple search
- - binary search (& which data structures this works with?!)
+That was all pretty abstract! Let's look at an example of one problem and two different approaches to solve it - two different algorithms!
 
- Today we're going to look at two different algorithms for searching for a number within an array. 
+The problem we'll examine is how to search for a number within an array. We'll start with a target value (say 8) and an array, like `[0,4,5]`.  The algorithm should give us the index of the target number in the array, if it's in there, or some other value (let's say `null` or `nil` if it's not there). If the target is in the array multiple times, we'll accept any index where it occurs.
 
- We do binary search:
+> We do binary search:
 
- Have each student write a number on a piece of paper, large enough so that it can be seen from far away. They can choose any number. 
+> Have each student write a number on a piece of paper, large enough so that it can be seen from far away. They can choose any number. 
 
- Once each person has chosen a number, have the students stand up in sorted order. 
+> Once each person has chosen a number, have the students stand up in sorted order. 
 
- Have one student (or a coinstructor) pick any number, not worrying about whether it's on one of the cards or not. If you're picking the number, choose one next to the middle (but not in the middle)!
+> Have one student (or a coinstructor) pick any number, not worrying about whether it's on one of the cards or not. If you're picking the number, choose one next to the middle (but not in the middle)!
 
-Tell the students they are an array, and ask for one way to search through the array for the target number.  Hopefully you'll get a brute force suggestion.  Starting with index 0 (the student with the lowest number), have the students execute a brute force search for the number.  Especially if the number was early in the array, ask how many students they'd have to check for a number that isn't in the array. They should realize it would require looking at everyone's number in order. 
+> Tell the students they are an array, and have them count off their indices.
 
-Tell them that since they're sorted they can do a little better. Ask for suggestions, and move forward with finding the middle of the array.  Ask three quesitons. For example, if the target is 43: Are you 43? Are you greater than 43? Are you less than 43?   "Discard" the students whose numbers are in the wrong half of the array.  Ask how to move forward now, and carry on until you find the target or figure out it's not in the array.  
+> Ask for a simple way to search through the array for the target number.  Hopefully you'll get a brute force suggestion.  Starting with index 0 (the student with the lowest number), have the students execute a brute force search for the number.  Especially if the number was early in the array, ask how many students they'd have to check for a number that isn't in the array. They should realize it would require looking at everyone's number in order. 
+
+> Tell them that since they're sorted they can do a little better. Ask for suggestions, and move forward with finding the middle of the array.  Make sure to calculate the middle "index". Ask three quesitons. For example, if the target is 43: Are you 43? Are you greater than 43? Are you less than 43?   "Discard" the students whose numbers are in the wrong half of the array.  Ask how to move forward now, and carry on until you find the target or figure out it's not in the array.  
+
+Here's some code for our simple search algorithm:
+
+```js
+function simple_search(target, arr){
+    for (var i = 0; i < arr.length; i++){
+        if (arr[i] === target){
+            return i;
+        }
+    }
+    return null;
+}
+```
+
+In a small group, discuss: What is the Big O time complexity the simple search algorithm (which this function implements)?
+
+#### Recursion and Binary Search
+
+Binary search is faster.  We saw that it could take many more tries to find the target number (or decide it wasn't in the array) with the simple search algorithm than with binary search. To express how much faster binary search is, we turn to Big O notation. 
+
+Here's some pseudocode for an iterative binary search:
+
+- take in an array, `arr`
+- track two values: `low` and `high` - the boundaries of the part of the array the target might be in
+- `low` starts at `0`, and `high` starts at `arr.length-1`
+- find the middle index of the array, and compare the number there to the target number
+    - if the target is the same as the number in the middle of the array, return the middle index
+    - if the target is bigger than the number in the middle of the array, set `low` to the middle index (why?)
+    - if the target is smaller, set `high` to the middle index
+- keep finding and checking the middle until you either find the target or run out of numbers to check
+
+<!--```js-->
+<!--function binary_search(target, arr){-->
+<!--    var low = 0, high = arr.length-1, mid;-->
+<!--    while (high - low >= 1){-->
+<!--        mid = (high - low)/2;-->
+<!--        if (target === mid){-->
+<!--            return mid;-->
+<!--        } else if (target > mid) {-->
+<!--            low = mid;-->
+<!--        } else {-->
+<!--            high = mid;-->
+<!--        }-->
+<!--    }-->
+<!--    return null;-->
+<!--}-->
+<!--```-->
 
 
- - recursion refresher & implement binary search (20 minutes)
- - binary search is indeed faster -> big oh notation
-
- Binary search seemed faster.  (Examples with counting how many comparisons are made.)  To get a feel for how much faster it is, we use Big Oh notation.  To calculate the Big Oh of binary search, we'll have to look a little more at recursion.  
-
- Iterative and recursive versions of binary search. 
 
 
- Now binary search is faster than simple search, but it requires that the input array be sorted. Let's look at a few different sorting algorithms.
 
- - simple sort (bubble? insertion?)
- - merge sort 
- - quick sort?
+###Discuss
 
 
-## Conclusion (5 mins)
-- Ask some questions
-- See if anyone learned what they were supposed to
-- See if you did a good job by teaching them stuff
+<details><summary>Would our simple search algorithm work on an unsorted array?</summary>Yes!</details>
+
+<details><summary>Would binary search work on an unsorted array?</summary>No! We wouldn't be able to reliably eliminate half of the array. </details>
