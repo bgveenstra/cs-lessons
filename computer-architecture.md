@@ -299,7 +299,7 @@ Line by line, what do you think is happening in the C code sample above?
 </details> 
 
 
-Note: Static and Dynamic Typing
+**Static and Dynamic Typing**
 
 C is a statically typed language, meaning it makes sure types match (for operations like "hello" + 5) when the code is compiled. If you tried to compile a C file with `"hello" + 5` in it, the compiling step would give you an error. Most statically types languages make you specify the type of a variable and do not allow you to change it. Languages with dynamic typing only check types at runtime.  So in Ruby you'd get `TypeError: no implicit conversion of Fixnum into String` when you tried to *run* the code. 
 
