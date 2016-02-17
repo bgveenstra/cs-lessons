@@ -104,8 +104,6 @@ function addAll(numArray){
 
 Logarithm terms in Big O notation usually come from recursive functions that divide the problem into smaller subproblems.
 
-<!--@TODO: more!-->
-
 
 
 ####Combinations
@@ -202,23 +200,78 @@ Here's some pseudocode for an iterative binary search:
     - if the target is smaller, set `high` to the middle index
 - keep finding and checking the middle until you either find the target or run out of numbers to check
 
-<!--```js-->
-<!--function binary_search(target, arr){-->
-<!--    var low = 0, high = arr.length-1, mid;-->
-<!--    while (high - low >= 1){-->
-<!--        mid = (high - low)/2;-->
-<!--        if (target === mid){-->
-<!--            return mid;-->
-<!--        } else if (target > mid) {-->
-<!--            low = mid;-->
-<!--        } else {-->
-<!--            high = mid;-->
-<!--        }-->
-<!--    }-->
-<!--    return null;-->
-<!--}-->
-<!--```-->
+```js
+function binary_search(target, arr) {
+    var low = 0, high = arr.length-1, mid;
+    while (high - low >= 1){
+        mid = (high - low)/2;
+        if (target === mid) {
+            return mid;
+        } else if (target > mid) {
+            low = mid;
+        } else {
+            high = mid;
+        }
+    }
+    return null;
+}
+```
 
+
+###Recursion 
+
+A "recursive" function (or algorithm) invokes itself as part of its problem solving. (Functions that aren't recursive are "iterative.")  Run this recursive function:
+
+```ruby
+def recurse(depth)
+  if depth > 0
+    puts "Spiraling down..."
+    recurse(depth - 1)
+    puts "Spiraling up..."
+  else
+    puts "Bottom of the rabbit hole"
+  end
+end
+
+recurse 5
+```
+
+When you write a recursive function, you always need a base case (where the recursion should stop) and a recursive case (when the recursive function should keep calling itself). 
+
+<details><summary>What is the base case for the recursive function above? How can you tell?</summary>
+The base case is when `depth` is less than or equal to `0`. You can tell because the `else` part of the function doesn't call the entire function again, but the `if` part did. </details>
+
+<details><summary>What is the recursive case for the function above?</summary>
+The recursive case is when `depth > 0`, because any time that's true the function will get called again.</details>
+
+#### The Call Stack
+
+Most programming languages rely on something called the "call stack," especially for recursion. The call stack keeps track of function calls that are in the process of executing.  When a function is called, it's `push`ed onto the call stack. When the function returns, it's `pop`ed off of the stack.
+
+Here's a recursive `factorial` method:
+
+```ruby
+def factorial(num)
+   if num > 1
+      num * factorial(num-1)
+   elsif num == 1 or num == 0
+      1
+   else
+      puts "can't do factorial of a negative number!"
+   end
+end
+
+factorial(4)
+# => 24
+```
+
+Here's a diagram that shows how the computer uses the "call stack" to keep track of the recursive function calls it needs to complete to calculate 4 factorial:
+
+![call stack diagram](http://i.stack.imgur.com/PK6Ht.png)
+
+
+
+Working with a partner, draw a call stack diagram for the `recurse 5` method call above.
 
 
 
