@@ -6,6 +6,8 @@ creator:
     name:
     city: SF
 competencies: Programming, Computer Science
+
+@TODO: separate recursion into different lesson, switch out example to largest sum of two numbers from two arrays, move search algorithms before big o, move commented out sections
 ---
 
 # Introduction to Algorithms 
@@ -82,33 +84,75 @@ function add(a,b){
 }
 ```
 
-We also assume that comparisons ( `<` ) are constant time operations, and that handling for `if`s and `returns` is pretty much constant time too.
+We also assume that comparisons ( `<` ) are constant time operations, and that handling for `function`s or `def`s, `if`s, and `return`s is usually constant time too.
+
+
+
+Note that in the example below, we always subtract once, divide once, and return once. The same sequence of O(1) operations is carried out no matter what the problem size is, so you might think of the the total time as 3*O(1).  Big O ignores constant multiples, so this is still just expressed in big O noation as O(1).
+
+```js
+function average(a,b){
+    return (a-b)/2;
+}
+```
+
 
 #### O(n)
 
 To say an algorithm takes O(n) time means that the computer will do more work to perform the algorithm if the inputs are larger or if there are more inputs -- *and* that the increase in work done mirrors the incresase in the size or number of inputs.
 
-Functions containing loops that go through the whole input are generally implementing at least **O(n)** algorithms.
+Algorithms that process each input at least once are generally implementing algorithms that will take at least **O(n)** time.  Functions containing loops that go through the whole input are a common example.  
 
 ```js
 function addAll(numArray){
-    var sum = 1;
-    for (var i=0; i<numArray.length; i++){
-        sum +=  numArray[i];
+    var sum = 1;                             // O(1)
+    for (var i=0; i<numArray.length; i++){   // n times:
+        sum +=  numArray[i];                        // O(1)
     }
-    return sum;
+    return sum;                              // O(1)
 }
 ```
 
+The time complexity of `addAll` is `O(1) + n*O(1) + O(1)`, which simplifies to `O(n) + O(1)` and finally to `O(n)`.
+
+See how the for loop acts like a multiplier for the O(1) operation(s) happening inside?  If the stuff inside the for loop required more time, like say if it were O(n), we'd still have to multiply. We'd get `O(1) + n*O(n) + O(1)` which would simplify to O(n<sup>2</sup>).
+
+
 ####O(log(n)) or O(n*log(n))
 
-Logarithm terms in Big O notation usually come from recursive functions that divide the problem into smaller subproblems.
+Logarithm terms in Big O notation usually come from recursive functions or scenarios where we use the "divide and conquer" approach. For interview prep purposes, some good rules of thumb are:
 
+* searching through a sorted array takes O(log(n)) time  
+* sorting an array takes O(n*log(n)) time
+
+<!--Let's look at one example divide and conquer: binary search!   If we have an input array of size n, we start with n possibile locations where the target value could be in the array (or one possibility that it's not in the array).  -->
+
+<!--Each time we iterate (or recurse) with binary search, we're able to eliminate half the array - we cut the problem size in half.  -->
+
+<!--We also do a little extra work each time we iterate: we have to do a subtraction and a division to get the middle index, and we have to compare the value there to the target. The same sequence of O(1) operations is carried out no matter what the problem size is, so even though there might be 10 of them, the total is still O(1). -->
+
+<!--In the worst case scenario, when the target isn't in the array, we'll keep cutting the problem size in half until there's only one possibility left.  -->
+
+<!--Now we want to find the time it takes to go from all n+1 possibilities down to just 1.  This will be the number of steps it takes times the O(1) extra work we do at each step.   So how many steps does it take to go from a problem size of n+1 to 1, if we're dividing the problem size by 2 at each step?  By definition, the answer is log<sub>2</sub>(n).  -->
+
+<!--#####Exponents and Logarithms-->
+
+<!--Most people don't think about exponents and logarithms very much after high school math.  Remember, b<sup>x</sup> means b is multiplied by itself x times. So b<sup>3</sup> is b*b*b.  -->
+
+<!--<details><summary>What is 2<sup>4</sup>?</summary>2<sup>4</sup> = 2*2*2*2 = 16</details>-->
+
+<!--Logarithms are the opposite of exponents. If b<sup>x</sup> = n, then log<sub>b</sub>(n) = x.  -->
+
+
+<!--<details><summary>What is log<sub>2</sub>(16)?</summary>4, because 2<sup>4</sup> = 16.</details>-->
+
+
+<!--Exponents answer "what do we get if we multiply b x times?", and logarithms answer "how many times would we have to multiply b to get to n?". -->
 
 
 ####Combinations
 
-Almost everything else is composed of combinations of those. For example, if a for loop has more complex operations inside it, time complexity is usually higher.
+Almost everything else is composed of combinations of the times we've looked at so far. For example, if a for loop has more complex operations inside it, time complexity is usually higher.
 
 ```js
 function addAllArrays(arrayOfArrays){
@@ -183,7 +227,7 @@ function simple_search(target, arr){
 }
 ```
 
-In a small group, discuss: What is the Big O time complexity the simple search algorithm (which this function implements)?
+In a small group, discuss: What is the Big O time complexity of the simple search algorithm this function implements?
 
 #### Recursion and Binary Search
 
@@ -277,25 +321,116 @@ Here's a diagram that shows how the computer uses the "call stack" to keep track
 
 ###Calculating Big O for Recursive Functions
 
-There are a few ways to calculate Big O for recursive functions.
+There are a few ways to calculate Big O for recursive algorithms.  One conceptually simple but powerful tool is a recurrence relation. Each recurrence relation is a math equation, but it's totally within reach even if it's been a while since you touched algebra. First, it gives a name to the time it takes to solve a problem with some input size `x` - this will be `T(x)`. So the time the algorithm needs for our tpical input size `n` is called `T(n)`.  Here's the key part: it uses the specifics of the algorithm to phrase `T(n)` in terms of the time required for recursive calls the function makes (or recursive invocations of the algorithm).  Finally, it takes into account the extra work that has to be done to go from the recursive call answers back to the full answer for `T(n)`; this extra work is usually simplified to Big O notation.
 
-####Recursion Trees
+Let's look at factorial again. Here's pseudocode:
 
-The call stack is inherently tied to how a processor handles function calls. But algorithms don't always have to be implemented in functions! When we think of recursive algorithms, we can draw them as recursion "trees." 
+```python
+def factorial(n):
+    if n <= 1:
+        return 1
+    else:
+        return n * factorial (n-1)
+```
 
-![recursion tree for fibonacci](https://users.soe.ucsc.edu/~fire/dev-2008f-12/labs/lab8-Recursion-vs-Iteration/fib_5.png)
+This translates to the following reccurrence relation:
 
-####Math
+`T(n) = T(n-1) + O(1)`.
 
-Many recursive algorithms can be modeled with this formula:
+Here's fibonacci:
 
-T(n) = aT(n/b) + O(1)
+```python
+def fib(n):
+    if n < 0:
+        return 0
+    else if n <= 1:
+        return 1
+    else:
+        return fib(n-1) + fib(n-2)
+```
 
-where T(n) is the time it takes to calculate the answer for input size n, a is the number of subproblems you have to figure out to get the answer, n/b is the size of each subproblem, and the O(1) stands for some small extra amout of work to combine the answers to the subproblems.   
+<details>
+    <summary>Write a recurrence relation for recursive binary search.</summary>
+    `T(n) = T(n/2) + O(1)`
+</details>
 
-This will be clearer with an example. For the recursive binary search algorithm, the equation would be:
+<details>
+    <summary>Write a recurrence relation for recursive binary search.</summary>
+    `T(n) = T(n/2) + O(1)`
+</details>
 
-T(n) = 1*T(n/2) + O(1)
+
+Cheatsheet
+<table>
+  <tr>
+    <th>Recurrence</th>
+    <th>Algorithm</th>
+    <th>Big-Oh Solution</th>
+  </tr>
+  <tr>
+    <th>T(n) = T(n/2) + O(1)</th>
+    <th>Binary Search</th>
+    <th>O(log(n))</th>
+  </tr>
+  <tr>
+    <th>T(n) = T(n-1) + O(1)</th>
+    <th>Factorial</th>
+    <th>O(n)</th>
+  </tr>
+  <!--<tr>-->
+  <!--  <th>T(n) = 2T(n/2) + O(1)</th>-->
+  <!--  <th>tree traversal</th>-->
+  <!--  <th>O(n)</th>-->
+  <!--</tr>-->
+  <tr>
+    <th>T(n) = 2T(n/2) + O(n)</th>
+    <th>Mergesort</th>
+    <th>O(n*log(n))</th>
+  </tr>
+  <tr>
+    <th>T(n) = T(n-1) + O(n) </th>
+    <th>bubble sort </th>
+    <th>O(n<sup>2</sup>)</th>
+  </tr>
+  <tr>
+    <th>T(n) = T(n-1) + T(n-2) + O(1)</th>
+    <th>fibonacci</th>
+    <th>O(2<sup>n</sup>)</th>
+  </tr>
+	                      	                    
+
+<!--####Recursion Trees-->
+
+<!--The call stack is inherently tied to how a processor handles function calls. But algorithms don't always have to be implemented in functions! When we think of recursive algorithms, we can draw them as recursion "trees." -->
+
+<!--![recursion tree for fibonacci](https://users.soe.ucsc.edu/~fire/dev-2008f-12/labs/lab8-Recursion-vs-Iteration/fib_5.png)-->
+
+<!--Then, to calculate the time complexity of the algorithm, we look at the total work done in the tree. Here's a recursion tree for a recursive factorial algorithm with input 3:-->
+
+<!--```-->
+<!--    factorial(3)-->
+<!--         |-->
+<!--    factorial(2)-->
+<!--         | -->
+<!--    factorial(1)-->
+<!--```-->
+<!--The total work done for `factorial(3)` is the work done for factorial(1) + any extra work done to find factorial(2) from the factorail(1) answer, plus any extra work to find factorial(3) from the factorial(2) answer.  We know from looking at the factorial algorithm that the only extra work is multiplying each smaller answer by the number we're on.  For example, factorial(3) = 3* factorial(2).  And multiplicaiton happens to be one of those simple operations that we can almost always consider O(1). -->
+
+
+<!--And here's one with input n:-->
+<!--```-->
+<!--    factorial(n)-->
+<!--         |-->
+<!--    factorial(n-1)-->
+<!--         |-->
+<!--    factorial(n-2)-->
+<!--        ...-->
+<!--    factorial(2)-->
+<!--         |-->
+<!--    factorial(1)-->
+        
+<!--```-->
+
 
 
 
