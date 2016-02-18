@@ -271,7 +271,31 @@ Here's a diagram that shows how the computer uses the "call stack" to keep track
 
 
 
-Working with a partner, draw a call stack diagram for the `recurse 5` method call above.
+**Working with a partner, draw a call stack diagram for the `recurse 5` method call above.**
+
+**Working with a partner, draw a call stack diagram for a recursive binary search algorithm with target 10 and input array [8, 10, 12, 13, 12, 15].**
+
+###Calculating Big O for Recursive Functions
+
+There are a few ways to calculate Big O for recursive functions.
+
+####Recursion Trees
+
+The call stack is inherently tied to how a processor handles function calls. But algorithms don't always have to be implemented in functions! When we think of recursive algorithms, we can draw them as recursion "trees." 
+
+![recursion tree for fibonacci](https://users.soe.ucsc.edu/~fire/dev-2008f-12/labs/lab8-Recursion-vs-Iteration/fib_5.png)
+
+####Math
+
+Many recursive algorithms can be modeled with this formula:
+
+T(n) = aT(n/b) + O(1)
+
+where T(n) is the time it takes to calculate the answer for input size n, a is the number of subproblems you have to figure out to get the answer, n/b is the size of each subproblem, and the O(1) stands for some small extra amout of work to combine the answers to the subproblems.   
+
+This will be clearer with an example. For the recursive binary search algorithm, the equation would be:
+
+T(n) = 1*T(n/2) + O(1)
 
 
 
