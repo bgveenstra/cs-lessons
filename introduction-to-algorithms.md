@@ -397,6 +397,7 @@ Cheatsheet
     <th>fibonacci</th>
     <th>O(2<sup>n</sup>)</th>
   </tr>
+  </table>
 	                      	                    
 
 <!--####Recursion Trees-->
