@@ -125,29 +125,29 @@ Logarithm terms in Big O notation usually come from recursive functions or scena
 * searching through a sorted array takes O(log(n)) time  
 * sorting an array takes O(n*log(n)) time
 
-<!--Let's look at one example divide and conquer: binary search!   If we have an input array of size n, we start with n possibile locations where the target value could be in the array (or one possibility that it's not in the array).  -->
+> Let's look at one example divide and conquer: binary search!   If we have an input array of size n, we start with n possibile locations where the target value could be in the array (or one possibility that it's not in the array).  
 
-<!--Each time we iterate (or recurse) with binary search, we're able to eliminate half the array - we cut the problem size in half.  -->
+> Each time we iterate (or recurse) with binary search, we're able to eliminate half the array - we cut the problem size in half.  
 
-<!--We also do a little extra work each time we iterate: we have to do a subtraction and a division to get the middle index, and we have to compare the value there to the target. The same sequence of O(1) operations is carried out no matter what the problem size is, so even though there might be 10 of them, the total is still O(1). -->
+> We also do a little extra work each time we iterate: we have to do a subtraction and a division to get the middle index, and we have to compare the value there to the target. The same sequence of O(1) operations is carried out no matter what the problem size is, so even though there might be 10 of them, the total is still O(1). 
 
-<!--In the worst case scenario, when the target isn't in the array, we'll keep cutting the problem size in half until there's only one possibility left.  -->
+> In the worst case scenario, when the target isn't in the array, we'll keep cutting the problem size in half until there's only one possibility left.  
 
-<!--Now we want to find the time it takes to go from all n+1 possibilities down to just 1.  This will be the number of steps it takes times the O(1) extra work we do at each step.   So how many steps does it take to go from a problem size of n+1 to 1, if we're dividing the problem size by 2 at each step?  By definition, the answer is log<sub>2</sub>(n).  -->
+> Now we want to find the time it takes to go from all n+1 possibilities down to just 1.  This will be the number of steps it takes times the O(1) extra work we do at each step.   So how many steps does it take to go from a problem size of n+1 to 1, if we're dividing the problem size by 2 at each step?  By definition, the answer is log<sub>2</sub>(n).  
 
-<!--#####Exponents and Logarithms-->
+> #####Exponents and Logarithms
 
-<!--Most people don't think about exponents and logarithms very much after high school math.  Remember, b<sup>x</sup> means b is multiplied by itself x times. So b<sup>3</sup> is b*b*b.  -->
+> Most people don't think about exponents and logarithms very much after high school math.  Remember, b<sup>x</sup> means b is multiplied by itself x times. So b<sup>3</sup> is b*b*b.  
 
-<!--<details><summary>What is 2<sup>4</sup>?</summary>2<sup>4</sup> = 2*2*2*2 = 16</details>-->
+> <details><summary>What is 2<sup>4</sup>?</summary>2<sup>4</sup> = 2*2*2*2 = 16</details>
 
-<!--Logarithms are the opposite of exponents. If b<sup>x</sup> = n, then log<sub>b</sub>(n) = x.  -->
-
-
-<!--<details><summary>What is log<sub>2</sub>(16)?</summary>4, because 2<sup>4</sup> = 16.</details>-->
+> Logarithms are the opposite of exponents. If b<sup>x</sup> = n, then log<sub>b</sub>(n) = x.  
 
 
-<!--Exponents answer "what do we get if we multiply b x times?", and logarithms answer "how many times would we have to multiply b to get to n?". -->
+> <details><summary>What is log<sub>2</sub>(16)?</summary>4, because 2<sup>4</sup> = 16.</details>
+
+
+> Exponents answer "what do we get if we multiply b x times?", and logarithms answer "how many times would we have to multiply b to get to n?". 
 
 
 ####Combinations
@@ -400,37 +400,37 @@ Cheatsheet
   </table>
 	                      	                    
 
-<!--####Recursion Trees-->
+####Recursion Trees (Drop!?!?!?!!!!!)
 
-<!--The call stack is inherently tied to how a processor handles function calls. But algorithms don't always have to be implemented in functions! When we think of recursive algorithms, we can draw them as recursion "trees." -->
+The call stack is inherently tied to how a processor handles function calls. But algorithms don't always have to be implemented in functions! When we think of recursive algorithms, we can draw them as recursion "trees." 
 
-<!--![recursion tree for fibonacci](https://users.soe.ucsc.edu/~fire/dev-2008f-12/labs/lab8-Recursion-vs-Iteration/fib_5.png)-->
+<img src="https://users.soe.ucsc.edu/ ~fire/dev-2008f-12/labs/lab8-Recursion-vs-Iteration/fib_5.png" width=70% alt="recursion tree for fibonacci">
 
-<!--Then, to calculate the time complexity of the algorithm, we look at the total work done in the tree. Here's a recursion tree for a recursive factorial algorithm with input 3:-->
+Then, to calculate the time complexity of the algorithm, we look at the total work done in the tree. Here's a recursion tree for a recursive factorial algorithm with input 3:
 
-<!--```-->
-<!--    factorial(3)-->
-<!--         |-->
-<!--    factorial(2)-->
-<!--         | -->
-<!--    factorial(1)-->
-<!--```-->
-<!--The total work done for `factorial(3)` is the work done for factorial(1) + any extra work done to find factorial(2) from the factorail(1) answer, plus any extra work to find factorial(3) from the factorial(2) answer.  We know from looking at the factorial algorithm that the only extra work is multiplying each smaller answer by the number we're on.  For example, factorial(3) = 3* factorial(2).  And multiplicaiton happens to be one of those simple operations that we can almost always consider O(1). -->
+```
+    factorial(3)
+         |
+    factorial(2)
+         | 
+    factorial(1)
+```
+The total work done for `factorial(3)` is the work done for factorial(1) + any extra work done to find factorial(2) from the factorail(1) answer, plus any extra work to find factorial(3) from the factorial(2) answer.  We know from looking at the factorial algorithm that the only extra work is multiplying each smaller answer by the number we're on.  For example, factorial(3) = 3* factorial(2).  And multiplicaiton happens to be one of those simple operations that we can almost always consider O(1). 
 
 
-<!--And here's one with input n:-->
-<!--```-->
-<!--    factorial(n)-->
-<!--         |-->
-<!--    factorial(n-1)-->
-<!--         |-->
-<!--    factorial(n-2)-->
-<!--        ...-->
-<!--    factorial(2)-->
-<!--         |-->
-<!--    factorial(1)-->
+And here's one with input n:
+```
+    factorial(n)
+         |
+    factorial(n-1)
+         |
+    factorial(n-2)
+        ...
+    factorial(2)
+         |
+    factorial(1)
         
-<!--```-->
+```
 
 
 
