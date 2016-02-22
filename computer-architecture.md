@@ -1,4 +1,4 @@
-<!--
+
 ---
 title: Computer Architecture
 type: lesson
@@ -10,7 +10,7 @@ competencies: Computer Science
 
 @TODO - copyright for images (or replace)
 ---
-
+<!--
 
 Parts of a computer  
 Memory  
@@ -95,10 +95,10 @@ Pair up for 30 seconds and discuss:
 
 Because bits don't hold much information, programmers think about them in groups.  "Bytes" are groups of 8 bits, like `01000111` and `01000001`.
 
-<!--<details> -->
-<!--  <summary>How many different combinations of `1`s and `0`s are possible in a byte?</summary>-->
-<!--   <p> 2<sup>8</sup>, or 256</p>-->
-<!--</details> -->
+> <details> 
+>   <summary>How many different combinations of `1`s and `0`s are possible in a byte?</summary>
+>   <p> 2<sup>8</sup>, or 256</p>
+> </details> 
 
 **Bonus: Information Encoding**
 
@@ -129,19 +129,19 @@ Binary, hexadecimal, and our normal decimal representations are all just differe
 <p>Octal numbers are base 8. The "base" of a number system tells how many digits it has. Looking at the chart, you'll notice the OCT column only uses the digits 0 through 7 -- 8 digits!</p>
 </details>
 
-<!--#### Practice with Binary Numbers-->
+> #### Practice with Binary Numbers
 
 
-<!--Bit manipulation describes operations that act on binary numbers.  You can perform common arithmetic on binary numbers. There's also a specail name for "bit shifting" values left or right. This either adds a `0` at the end of the number for left shift ( `<<`), which is equivalent to multiplying by 2, or removes the last binary digit for right shift (`>>`), which is almost like diving by two (why almost?).  -->
+> Bit manipulation describes operations that act on binary numbers.  You can perform common arithmetic on binary numbers. There's also a specail name for "bit shifting" values left or right. This either adds a `0` at the end of the number for left shift ( `<<`), which is equivalent to multiplying by 2, or removes the last binary digit for right shift (`>>`), which is almost like diving by two (why almost?).  
 
-<!--As sequences of 0s and 1s, binary numbers can also be acted on by logical operators, if you consider each `1` like a `true` and each `0` like a `false`.  For example, `NOT 101` would give `010`.   `1011 AND 1101` would give `1001`. -->
+> As sequences of 0s and 1s, binary numbers can also be acted on by logical operators, if you consider each `1` like a `true` and each `0` like a `false`.  For example, `NOT 101` would give `010`.   `1011 AND 1101` would give `1001`. 
 
-<!--<details> -->
-<!--  <summary>What other operations do you think can act on binary numbers?</summary>-->
-<!--   <p> We've seen `AND` and `OR`.</p>-->
-<!--</details> -->
+> <details> 
+>  <summary>What other operations do you think can act on binary numbers?</summary>
+>   <p> We've seen `AND` and `OR`.</p>
+> </details> 
 
-<!--A boolean operator you may not know of is `XOR`. It's a lot like `OR`, except `a XOR b` is only true if exactly one of a or b is true.  If both a and b are true, or if both are false, `a XOR b` is false.   So `1010 XOR 0011` would give `1001`.-->
+> A boolean operator you may not know of is `XOR`. It's a lot like `OR`, except `a XOR b` is only true if exactly one of a or b is true.  If both a and b are true, or if both are false, `a XOR b` is false.   So `1010 XOR 0011` would give `1001`.
 
 ##Memory
 
@@ -189,12 +189,12 @@ Most modern personal computer hard drives can store hundreds of gigabytes or eve
 
 When you create a variable, some amount of space in memory is reserved for that variable, a place in the memory "city" where that information can live.  This is called memory allocation. When a variable is no longer needed, the space should be freed; this is called memory deallocation. Most high-level programming languages handle memory allocation and deallocation for us. 
 
-<!--Programming lanaguges that automatically handle getting rid of old data (for instance, after it goes out of scope) are doing "garbage collection" for us.  -->
+> Programming lanaguges that automatically handle getting rid of old data (for instance, after it goes out of scope) are doing "garbage collection" for us.  
 
-<!--<details>-->
-<!--<summary>Is JavaScript garbage collected?</summary>-->
-<!--<p>We've created JavaScript variables, but we haven't had to carefully destroy them when we're done using them.  JavaScript **is** a garbage collected language.</p>-->
-<!--</details>-->
+> <details>
+> <summary>Is JavaScript garbage collected?</summary>
+> <p>We've created JavaScript variables, but we haven't had to carefully destroy them when we're done using them.  JavaScript **is** a garbage collected language.</p>
+> </details>
 
 
 
@@ -220,10 +220,10 @@ The number of bits a processor can work on at one time is related to its "word s
 
 
 
-<!--<details>   -->
-<!--  <summary>How many different combinations of `1`s and `0`s are possible in a 32-bit word?</summary>   -->
-<!--   <p> 2<sup>32</sup>, or 4294967296</p>   -->
-<!--</details>   -->
+> <details>   
+>  <summary>How many different combinations of `1`s and `0`s are possible in a 32-bit word?</summary>   
+>   <p> 2<sup>32</sup>, or 4294967296</p>   
+> </details>   
 
 
 Processors act on data stored in memory and follow instructions stored in memory. Where that information is stored has an impact on how quickly the processor can access and act on it.
@@ -272,7 +272,7 @@ POPQ     %rbp
 RETQ
 ```
 
-<!--The first two lines keep track of where the funciton starts. Then the next line sets %eax to 0.  Finally, the last two lines cause the processor to return to whatever it was doing.-->
+> The first two lines keep track of where the funciton starts. Then the next line sets %eax to 0.  Finally, the last two lines cause the processor to return to whatever it was doing.
 
 Can you guess what the code is doing?  The %rbp, %rsp, and %eax are registers - data storage locations directly in the processor. It's very fast for a computer to access the processor's registers, and they usually store the operands for an arithmetic or logic operation being carried out. The %rbp and %rsp registers have special purposes; they help the computer keep track of where in the call stack the current operations are being carried out (we won't go into this too much, but it's the basis for how control flow works).
 
