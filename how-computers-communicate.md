@@ -106,7 +106,7 @@ The two most common protocols used in the transport layer are:
 
 * TCP - Transmission control protocol
 
-TCP is used when transportation of data must be *reliable*. It is ideal for transfering files such as images, songs, or webpages.  It combines the application layer data with extra header information that allows it to check for errors, ensure the data is ordered correctly, and trigger retransmission if there was a problem. Once they've been wrapped up by TCP, these units of data are called "packets."
+TCP is used when transportation of data must be *reliable*. It is ideal for transfering files such as images, songs, or webpages.  It combines the application layer data with extra header information that allows it to check for errors, ensure the data is ordered correctly, and trigger retransmission if there was a problem. Once they've been wrapped up by TCP, these units of data are called "packets."  TCP temporarily creates a connection between the source and destination computers. 
 
 * UDP - User datagram protocol
 
