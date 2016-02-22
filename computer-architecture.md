@@ -8,7 +8,6 @@ creator:
     city: SF
 competencies: Computer Science
 
-@TODO - copyright for images (or replace)
 ---
 <!--
 
@@ -62,7 +61,7 @@ Modern computers take in instructions and data and perform calculations on the d
 * processor - so the computer can carry out instructions and run calculations on data (CPU)
 * output devices - so the computer can return results (printer, monitor)
 
-![computer block diagram - input, output, and memory connected to processor](http://onlinemca.com/mca_course/kurukshetra_university/semester1/c/img_c/comp_block_diagram.png)
+[computer block diagram - input, output, and memory connected to processor](http://onlinemca.com/mca_course/kurukshetra_university/semester1/c/img_c/comp_block_diagram.png)
 
 
 You're already familiar with a few input and output devices. If you've shopped for a computer recently, you've also heard information about computers' memory and processor loadouts. 
@@ -153,12 +152,12 @@ You can think of your computer's memory as a giant city - in fact, we refer to t
 
 Some information in a computer's memory persists after the computer is turned off; this is mostly stored on the hard disk drive or ssd. Solid state disks (SSDs) are faster than hard disks because hard disks literally have to wait for a disk to spin into the right position to read or write data!  These persistent memory stores are like the computer's "long-term" memory.
 
-<img src="http://www.oceantechonline.com/wp-content/uploads/2013/04/hard-drive1.png" alt="hard disk drive" width="25%">
+<img src="http://www.oceantechonline.com/ wp-content/uploads/2013/04/hard-drive1.png" alt="hard disk drive" width="25%">
 *a hard disk drive*
 
 Some kinds of memory clear their information when the computer is turned off. The example talked about most often is RAM, which stands for "random access memory."  That's the computer's "short-term memory." It's faster for a computer to access information from RAM than from either a hard disk drive or ssd.
 
-<img src="http://www.nemixcorp.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/8/184_pin_eccx2-a.jpg" width="30%">
+<img src="http://www.nemixcorp.com/ media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/8/184_pin_eccx2-a.jpg" width="30%">
 *sticks of RAM*
 
 <details>
@@ -205,7 +204,7 @@ When you create a variable, some amount of space in memory is reserved for that 
 
 Processors perform all of the operations that take place within your computer.  The processor is the "brain" of the computer!
 
-<img src="https://blazotech.files.wordpress.com/2011/05/1298865422-79.jpg" width="25%"> 
+<img src="https://blazotech.files.wordpress.com/ 2011/05/1298865422-79.jpg" width="25%"> 
 *a processor*
 
 
@@ -228,7 +227,7 @@ The number of bits a processor can work on at one time is related to its "word s
 
 Processors act on data stored in memory and follow instructions stored in memory. Where that information is stored has an impact on how quickly the processor can access and act on it.
 
-![chart of memory types: size, cost, and access speed](https://cloud.githubusercontent.com/assets/3254910/12181035/b55fae34-b534-11e5-8f86-18b111d0b3ef.png)  
+[chart of memory types: size, cost, and access speed](https://cloud.githubusercontent.com/assets/3254910/12181035/b55fae34-b534-11e5-8f86-18b111d0b3ef.png)  
 
 
 
