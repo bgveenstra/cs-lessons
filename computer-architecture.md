@@ -8,6 +8,8 @@ creator:
 competencies: Computer Science
 
 ---
+
+
 <!--
 
 Parts of a computer  
@@ -127,7 +129,7 @@ The ASCII table above also has a column for the HEX or "hexadecimal" value assoc
 
 
 
-128 different codes aren't nearly enough for all of the characters on modern websites. Because of ASCII's limited range, it's been replaced by encodings that can use more bits to represent each character, like UTF-8. You've probably mentioned UTF-8 many times in your HTML document head tags: `<meta charset="UTF-8">`.  UTF-8 uses variable numbers of bits to encode different characters. So in UTF-8, "J" is `&#x4A;` (in hexadecimal), and  "&#x26C5;" is `&#x26C5;`.  With the extra bits, it can encode fun symbols (cool) but also languages that aren't English (essential!).
+128 different codes aren't nearly enough for all of the characters on modern websites. Because of ASCII's limited range, it's been replaced by encodings that can use more bits to represent each character, like UTF-8. You've probably mentioned UTF-8 many times in your HTML document head tags: `<meta charset="UTF-8">`.  UTF-8 uses variable numbers of bits to encode different characters. So in UTF-8, "J" is `&#x4A;` (in hexadecimal), and  "&#x266b;" is `&#x266b;`.  With the extra bits, it can encode fun symbols (cool) but also languages that aren't English (essential!).
 
 
 
@@ -140,27 +142,27 @@ Binary, hexadecimal, and our normal decimal representations are all just differe
 <p>Octal numbers are base 8. The "base" of a number system tells how many digits it has. Looking at the chart, you'll notice the OCT column only uses the digits 0 through 7 -- 8 digits!</p>
 </details>
 
-<!--> #### Practice with Binary Numbers-->
+<!--  > #### Practice with Binary Numbers-->
 
 
-<!--> Bit manipulation describes operations that act on binary numbers.  You can perform common arithmetic on binary numbers. There's also a specail name for "bit shifting" values left or right. This either adds a `0` at the end of the number for left shift ( `<<`), which is equivalent to multiplying by 2, or removes the last binary digit for right shift (`>>`), which is almost like diving by two (why almost?).  -->
+<!-- > Bit manipulation describes operations that act on binary numbers.  You can perform common arithmetic on binary numbers. There's also a specail name for "bit shifting" values left or right. This either adds a `0` at the end of the number for left shift ( `<<`), which is equivalent to multiplying by 2, or removes the last binary digit for right shift (`>>`), which is almost like diving by two (why almost?).  -->
 
-<!--> As sequences of 0s and 1s, binary numbers can also be acted on by logical operators, if you consider each `1` like a `true` and each `0` like a `false`.  For example, `NOT 101` would give `010`.   `1011 AND 1101` would give `1001`. -->
+<!-- > As sequences of 0s and 1s, binary numbers can also be acted on by logical operators, if you consider each `1` like a `true` and each `0` like a `false`.  For example, `NOT 101` would give `010`.   `1011 AND 1101` would give `1001`. -->
 
-<!--> <details> -->
-<!-->  <summary>What other operations do you think can act on binary numbers?</summary>-->
-<!-->   <p> We've seen `AND` and `OR`.</p>-->
-<!--> </details> -->
+<!-- > <details> -->
+<!-- >  <summary>What other operations do you think can act on binary numbers?</summary>-->
+<!-- >   <p> We've seen `AND` and `OR`.</p>-->
+<!-- > </details> -->
 
-<!--> A boolean operator you may not know of is `XOR`. It's a lot like `OR`, except `a XOR b` is only true if exactly one of a or b is true.  If both a and b are true, or if both are false, `a XOR b` is false.   So `1010 XOR 0011` would give `1001`.-->
-
-
+<!-- > A boolean operator you may not know of is `XOR`. It's a lot like `OR`, except `a XOR b` is only true if exactly one of a or b is true.  If both a and b are true, or if both are false, `a XOR b` is false.   So `1010 XOR 0011` would give `1001`.-->
 
 
-<!--> <details> -->
-<!-->   <summary>How many different combinations of `1`s and `0`s are possible in a byte?</summary>-->
-<!-->   <p> 2<sup>8</sup>, or 256</p>-->
-<!--> </details> -->
+
+
+<!-- > <details> -->
+<!-- >   <summary>How many different combinations of `1`s and `0`s are possible in a byte?</summary>-->
+<!-- >   <p> 2<sup>8</sup>, or 256</p>-->
+<!-- > </details> -->
 
 ##Memory
 
@@ -208,12 +210,12 @@ Most modern personal computer hard drives can store hundreds of gigabytes or eve
 
 When you create a variable, some amount of space in memory is reserved for that variable, a place in the memory "city" where that information can live.  This is called memory allocation. When a variable is no longer needed, the space should be freed; this is called memory deallocation. Most high-level programming languages handle memory allocation and deallocation for us. 
 
-> Programming lanaguges that automatically handle getting rid of old data (for instance, after it goes out of scope) are doing "garbage collection" for us.  
+<!--> Programming lanaguges that automatically handle getting rid of old data (for instance, after it goes out of scope) are doing "garbage collection" for us.  -->
 
-> <details>
-> <summary>Is JavaScript garbage collected?</summary>
-> <p>We've created JavaScript variables, but we haven't had to carefully destroy them when we're done using them.  JavaScript **is** a garbage collected language.</p>
-> </details>
+<!-- > <details>-->
+<!-- > <summary>Is JavaScript garbage collected?</summary>-->
+<!-- > <p>We've created JavaScript variables, but we haven't had to carefully destroy them when we're done using them.  JavaScript **is** a garbage collected language.</p>-->
+<!-- > </details>-->
 
 
 
@@ -239,10 +241,10 @@ The number of bits a processor can work on at one time is related to its "word s
 
 
 
-> <details>   
->  <summary>How many different combinations of `1`s and `0`s are possible in a 32-bit word?</summary>   
->   <p> 2<sup>32</sup>, or 4294967296</p>   
-> </details>   
+<!-- > <details>   -->
+<!-- >  <summary>How many different combinations of `1`s and `0`s are possible in a 32-bit word?</summary>   -->
+<!-- >   <p> 2<sup>32</sup>, or 4294967296</p>   -->
+<!-- > </details>   -->
 
 
 Processors act on data stored in memory and follow instructions stored in memory. Where that information is stored has an impact on how quickly the processor can access and act on it.
