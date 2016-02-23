@@ -21,7 +21,10 @@ competencies: Programming, Computer Science
 
 <!--- - Distinguish between iterative and recursive algorithms and trace recursive function calls.   -->
 
-- Analyze the time and memory requirements of common patterns like for loops.  
+- Recognize Big O time requirements of common patterns like for loops.  
+
+
+- Analyze the time and memory requirements of algorithms with Big O notation.
 
 ### Preparation
 *Before this lesson, students should already be able to:*
