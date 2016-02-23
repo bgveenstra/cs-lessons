@@ -338,7 +338,7 @@ end
 ```
 
 
-## Practice (20 minutes)
+## Practice (15 minutes)
 
 
 1. How many different values can you represent with one bit?  One decimal digit? One letter?  
