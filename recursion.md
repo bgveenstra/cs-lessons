@@ -48,116 +48,98 @@ s of numbers, find the largest sum of two numbers where one comes from each of t
 
 Binary search is faster.  We saw that it could take many more tries to find the target number (or decide it wasn't in the array) with the simple search algorithm than with binary search. To express how much faster binary search is, we turn to Big O notation. 
 
-<!--Here's some pseudocode for an iterative binary search:-->
+Here's some pseudocode for an iterative binary search:
 
-<!--- take in an array, `arr`-->
-<!--- track two values: `low` and `high` - the boundaries of the part of the array the target might be in-->
-<!--- `low` starts at `0`, and `high` starts at `arr.length-1`-->
-<!--- find the middle index of the array, and compare the number there to the target number-->
-<!--    - if the target is the same as the number in the middle of the array, return the middle index-->
-<!--    - if the target is bigger than the number in the middle of the array, set `low` to the middle index (why?)-->
-<!--    - if the target is smaller, set `high` to the middle index-->
-<!--- keep finding and checking the middle until you either find the target or run out of numbers to check-->
+- take in an array, `arr`
+- track two values: `low` and `high` - the boundaries of the part of the array the target might be in
+- `low` starts at `0`, and `high` starts at `arr.length-1`
+- find the middle index of the array, and compare the number there to the target number
+    - if the target is the same as the number in the middle of the array, return the middle index
+    - if the target is bigger than the number in the middle of the array, set `low` to the middle index (why?)
+    - if the target is smaller, set `high` to the middle index
+- keep finding and checking the middle until you either find the target or run out of numbers to check
 
-<!--```js-->
-<!--function binary_search(target, arr) {-->
-<!--    var low = 0, high = arr.length-1, mid;-->
-<!--    while (high - low >= 1){-->
-<!--        mid = (high - low)/2;-->
-<!--        if (target === mid) {-->
-<!--            return mid;-->
-<!--        } else if (target > mid) {-->
-<!--            low = mid;-->
-<!--        } else {-->
-<!--            high = mid;-->
-<!--        }-->
-<!--    }-->
-<!--    return null;-->
-<!--}-->
-<!--```-->
+```js
+function binary_search(target, arr) {
+    var low = 0, high = arr.length-1, mid;
+    while (high - low >= 1){
+        mid = (high - low)/2;
+        if (target === mid) {
+            return mid;
+        } else if (target > mid) {
+            low = mid;
+        } else {
+            high = mid;
+        }
+    }
+    return null;
+}
+```
 
+##Divide and Conquer
 
-
-Binary search is a great example of the "divide and conquer" approach!  If we have an input array of size n, we start with n possibile locations where the target value could be in the array (or one possibility that it's not in the array).  
+Binary search is a great example of the "divide and conquer" approach!  We start with an input array of size n and n possibile locations where the target value could be in the array (or one possibility that it's not in the array).  
 
 Each time we make a comparison in binary search, we're able to eliminate half the array - we cut the problem size in half.  
-
-We also do a little extra work each time: we have to do a subtraction and a division to get the middle index, and we have to compare the value there to the target. The same sequence of O(1) operations is carried out no matter what the problem size is, so even though there might be 10 of them, the total is still O(1). 
-
-In the worst case scenario, when the target isn't in the array, we'll keep cutting the problem size in half until there's only one possibility left.  
-
-Now we want to find the time it takes to go from all n+1 possibilities down to just 1.  This will be the number of steps it takes times the O(1) extra work we do at each step.   So how many steps does it take to go from a problem size of n+1 to 1, if we're dividing the problem size by 2 at each step?  By definition, the answer is log<sub>2</sub>(n).  
-
-#####Reminder: Exponents and Logarithms
-
-Most people don't think about exponents and logarithms very much after high school math.  Remember, b<sup>x</sup> means b is multiplied by itself x times. So b<sup>3</sup> is b*b*b.  
-
-<details><summary>What is 2<sup>4</sup>?</summary>2<sup>4</sup> = 2*2*2*2 = 16</details>
-
-Logarithms are the opposite of exponents. If b<sup>x</sup> = n, then log<sub>b</sub>(n) = x.  
+We saw that it took  log<sub>2</sub>(n) steps to go from a problem size of n+1 to 1, since we're dividing the problem size by 2 at each step.  Since each step did O(1) work, the total time requirement for binary search is O(log(n)).
 
 
-<details><summary>What is log<sub>2</sub>(16)?</summary>4, because 2<sup>4</sup> = 16.</details>
+###Recursion 
 
+A "recursive" function (or algorithm) invokes itself as part of its problem solving. (Functions that aren't recursive are "iterative.")  Run this recursive function:
 
-Exponents answer "what do we get if we multiply b x times?", and logarithms answer "how many times would we have to multiply b to get to n?". 
+```ruby
+def recurse(depth)
+  if depth > 0
+    puts "Spiraling down..."
+    recurse(depth - 1)
+    puts "Spiraling up..."
+  else
+    puts "Bottom of the rabbit hole"
+  end
+end
 
-<!--###Recursion -->
+recurse 5
+```
 
-<!--A "recursive" function (or algorithm) invokes itself as part of its problem solving. (Functions that aren't recursive are "iterative.")  Run this recursive function:-->
+When you write a recursive function, you always need a base case (where the recursion should stop) and a recursive case (when the recursive function should keep calling itself). 
 
-<!--```ruby-->
-<!--def recurse(depth)-->
-<!--  if depth > 0-->
-<!--    puts "Spiraling down..."-->
-<!--    recurse(depth - 1)-->
-<!--    puts "Spiraling up..."-->
-<!--  else-->
-<!--    puts "Bottom of the rabbit hole"-->
-<!--  end-->
-<!--end-->
+<details><summary>What is the base case for the recursive function above? How can you tell?</summary>
+The base case is when `depth` is less than or equal to `0`. You can tell because the `else` part of the function doesn't call the entire function again, but the `if` part did. </details>
 
-<!--recurse 5-->
-<!--```-->
+<details><summary>What is the recursive case for the function above?</summary>
+The recursive case is when `depth > 0`, because any time that's true the function will get called again.</details>
 
-<!--When you write a recursive function, you always need a base case (where the recursion should stop) and a recursive case (when the recursive function should keep calling itself). -->
+#### The Call Stack
 
-<!--<details><summary>What is the base case for the recursive function above? How can you tell?</summary>-->
-<!--The base case is when `depth` is less than or equal to `0`. You can tell because the `else` part of the function doesn't call the entire function again, but the `if` part did. </details>-->
+Most programming languages rely on something called the "call stack," especially for recursion. The call stack keeps track of function calls that are in the process of executing.  When a function is called, it's `push`ed onto the call stack. When the function returns, it's `pop`ed off of the stack.
 
-<!--<details><summary>What is the recursive case for the function above?</summary>-->
-<!--The recursive case is when `depth > 0`, because any time that's true the function will get called again.</details>-->
+Here's a recursive `factorial` method:
 
-<!--#### The Call Stack-->
+```ruby
+def factorial(num)
+   if num > 1
+      num * factorial(num-1)
+   elsif num == 1 or num == 0
+      1
+   else
+      puts "can't do factorial of a negative number!"
+   end
+end
 
-<!--Most programming languages rely on something called the "call stack," especially for recursion. The call stack keeps track of function calls that are in the process of executing.  When a function is called, it's `push`ed onto the call stack. When the function returns, it's `pop`ed off of the stack.-->
+factorial(4)
+# => 24
+```
 
-<!--Here's a recursive `factorial` method:-->
+Here's a diagram that shows how the computer uses the "call stack" to keep track of the recursive function calls it needs to complete to calculate 4 factorial:
 
-<!--```ruby-->
-<!--def factorial(num)-->
-<!--   if num > 1-->
-<!--      num * factorial(num-1)-->
-<!--   elsif num == 1 or num == 0-->
-<!--      1-->
-<!--   else-->
-<!--      puts "can't do factorial of a negative number!"-->
-<!--   end-->
-<!--end-->
-
-<!--factorial(4)-->
-<!--# => 24-->
-<!--```-->
-
-<!--Here's a diagram that shows how the computer uses the "call stack" to keep track of the recursive function calls it needs to complete to calculate 4 factorial:-->
-
-<!--![call stack diagram](http://i.stack.imgur.com/PK6Ht.png)-->
+![call stack diagram](http://i.stack.imgur.com/PK6Ht.png)
 
 
 
-<!--**Working with a partner, draw a call stack diagram for the `recurse 5` method call above.**-->
+**Working with a partner, draw a call stack diagram for the `recurse 5` method call above.**
 
-<!--**Working with a partner, draw a call stack diagram for a recursive binary search algorithm with target 10 and input array [8, 10, 12, 13, 12, 15].**-->
+**Working with a partner, draw a call stack diagram for a recursive binary search algorithm with target 10 and input array [8, 10, 12, 13, 12, 15].**
 
 <!--###Calculating Big O for Recursive Functions-->
 
@@ -271,13 +253,6 @@ Exponents answer "what do we get if we multiply b x times?", and logarithms answ
 <!--    factorial(1)-->
         
 <!--```-->
-
-
-#### More Big O Resources
-
-* reading from [Interview Cake](https://www.interviewcake.com/article/big-o-notation-time-and-space-complexity)
-* <a href="http://bigocheatsheet.com" target="_blank">Big-O Cheat Sheet</a>
-* <a href="https://rob-bell.net/2009/06/a-beginners-guide-to-big-o-notation" target="_blank">A beginner's guide to Big O notation - Rob Bell</a>
 
 
 
