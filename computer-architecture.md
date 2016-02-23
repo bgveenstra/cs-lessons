@@ -98,12 +98,12 @@ Because bits don't hold much information each, programmers think about them in g
 
 ####Information Encoding
 
-So how many bits would it take to tell someone your birthday? Or what color each pixel in an image should be? Or what  letter should appear on your website next? These are the basic questions behind encoding. You may have heard of ASCII encoding, often used for ASCII art:
+So how many bits would it take to tell someone your birthday? Or what color each pixel in an image should be? Or what  letter should appear on your website next? These are the basic questions behind "encoding." One bit isn't enough, but text and numbers can be encoded in a computer as *patterns* of binary digits.  You may have heard of ASCII encoding, often used for ASCII art:
 
 ```
   '___'
   ( O.O)
-/(,,,,,)      // definitely an owl
+/(,,,,,)      // This is definitely an owl.
    ^ ^
    
 ```
@@ -129,18 +129,18 @@ The ASCII table above also has a column for the HEX or "hexadecimal" value assoc
 
 
 
-128 different codes aren't nearly enough for all of the characters on modern websites. Because of ASCII's limited range, it's been replaced by encodings that can use more bits to represent each character, like UTF-8. You've probably mentioned UTF-8 many times in your HTML document head tags: `<meta charset="UTF-8">`.  UTF-8 uses variable numbers of bits to encode different characters. So in UTF-8, "J" is `&#x4A;` (in hexadecimal), and  "&#x266b;" is `&#x266b;`.  With the extra bits, it can encode fun symbols (cool) but also languages that aren't English (essential!).
+128 different codes aren't nearly enough for all of the characters on modern websites. Because of ASCII's limited range, it's been replaced by encodings that can use more bits to represent each character, like UTF-8. You've probably mentioned UTF-8 many times in your HTML document head tags: `<meta charset="UTF-8">`.  UTF-8 uses variable numbers of bits to encode different characters. So in UTF-8, "J" is `&#x4A;` (in hexadecimal), and  "&#x266b;" is `&#x266b;`.  With the freedom yo use extra bits, UTF-8 can encode symbols (cool!) but also languages that aren't English (essential!).
 
 
 
-**Bonus: Numerical "Bases"**
+<!--**Bonus: Numerical "Bases"**-->
 
-Binary, hexadecimal, and our normal decimal representations are all just different ways to look at the same numbers you're already familiar with.  If you'd like to learn more about this topic, it'll help to know that our normal decimal numbers are "base 10," binary numbers are "base 2," and hexadecimal numbers are "base 16." Octal numbers are less common. 
+<!--Binary, hexadecimal, and our normal decimal representations are all just different ways to look at the same numbers you're already familiar with.  If you'd like to learn more about this topic, it'll help to know that our normal decimal numbers are "base 10," binary numbers are "base 2," and hexadecimal numbers are "base 16." Octal numbers are less common. -->
 
-<details>
-<summary>Just for fun... can you tell from the chart what the "base" of the octal numbers (in the OCT column) might be?</summary>
-<p>Octal numbers are base 8. The "base" of a number system tells how many digits it has. Looking at the chart, you'll notice the OCT column only uses the digits 0 through 7 -- 8 digits!</p>
-</details>
+<!--<details>-->
+<!--<summary>Just for fun... can you tell from the chart what the "base" of the octal numbers (in the OCT column) might be?</summary>-->
+<!--<p>Octal numbers are base 8. The "base" of a number system tells how many digits it has. Looking at the chart, you'll notice the OCT column only uses the digits 0 through 7 -- 8 digits!</p>-->
+<!--</details>-->
 
 <!--  > #### Practice with Binary Numbers-->
 
@@ -298,7 +298,7 @@ RETQ
 <!--Can you guess what the code is doing?  The %rbp, %rsp, and %eax are registers - data storage locations directly in the processor. It's very fast for a computer to access the processor's registers, and they usually store the operands for an arithmetic or logic operation being carried out. The %rbp and %rsp registers have special purposes; they help the computer keep track of where in the call stack the current operations are being carried out (we won't go into this too much, but it's the basis for how control flow works).-->
 
 
-Assembly languages are basically the lowest level languages possible.  Here's very similar code expressed in a programming language called C. C came after assembly languages and was specifically designed to be easier for humans to read. It's a higher-level programming language than assembly, but it's still possible to translate it pretty directly to processor instructions. 
+Assembly languages are basically the lowest level languages possible.  Below is some very similar code expressed in a programming language called C. C came after assembly languages and was specifically designed to be easier for humans to read. It's a higher-level programming language than assembly, but it's still possible to translate it pretty directly to processor instructions. 
 
 ```c
 int main(){
