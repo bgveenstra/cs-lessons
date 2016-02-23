@@ -99,7 +99,7 @@ Because bits don't hold much information each, programmers think about them in g
 So how many bits would it take to tell someone your birthday? Or what color each pixel in an image should be? Or what  letter should appear on your website next? These are the basic questions behind "encoding." One bit isn't enough, but text and numbers can be encoded in a computer as *patterns* of binary digits.  You may have heard of ASCII encoding, often used for ASCII art:
 
 ```
-  '___'
+   '___'
   ( O.O)
 /(,,,,,)      // This is definitely an owl.
    ^ ^
