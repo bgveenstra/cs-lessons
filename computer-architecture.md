@@ -293,7 +293,7 @@ POPQ     %rbp
 RETQ
 ```
 
-<!--> The first two lines keep track of where the funciton starts. Then the next line sets %eax to 0.  Finally, the last two lines cause the processor to return to whatever it was doing.-->
+<!-- > The first two lines keep track of where the funciton starts. Then the next line sets %eax to 0.  Finally, the last two lines cause the processor to return to whatever it was doing.-->
 
 <!--Can you guess what the code is doing?  The %rbp, %rsp, and %eax are registers - data storage locations directly in the processor. It's very fast for a computer to access the processor's registers, and they usually store the operands for an arithmetic or logic operation being carried out. The %rbp and %rsp registers have special purposes; they help the computer keep track of where in the call stack the current operations are being carried out (we won't go into this too much, but it's the basis for how control flow works).-->
 
@@ -358,6 +358,8 @@ end
 
 1. What is a "scripting lanauage"? Give an example.
 
-1. Does JavaScript have "static typing" or "dynamic typing"? How do you explain the fact that in JavaScript "hello" + 5 is "hello5"?
+1. Does JavaScript have "static typing" or "dynamic typing"? 
 
 1. Is JavaScript a "compiled language" or an "interpreted language"? What about Ruby?  What does this mean for us as JavaScript and Ruby developers?
+
+1. How might you explain the fact that in JavaScript "hello" + 5 is "hello5"?
