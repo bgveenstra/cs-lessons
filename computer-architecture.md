@@ -62,7 +62,7 @@ Modern computers take in instructions and data and perform calculations on the d
 * processor - so the computer can carry out instructions and run calculations on data (CPU)
 * output devices - so the computer can return results (printer, monitor)
 
-[computer block diagram - input, output, and memory connected to processor](http://onlinemca.com/mca_course/kurukshetra_university/semester1/c/img_c/comp_block_diagram.png)
+![computer block diagram - input, output, and memory connected to processor](http://onlinemca.com/mca_course/kurukshetra_university/semester1/c/img_c/comp_block_diagram.png)
 
 
 You're already familiar with a few input and output devices. If you've shopped for a computer recently, you've also heard information about computers' memory and processor loadouts. 
@@ -174,12 +174,12 @@ You can think of your computer's memory as a giant city - in fact, we refer to t
 
 Some information in a computer's memory persists after the computer is turned off; this is mostly stored on the hard disk drive or ssd. Solid state disks (SSDs) are faster than hard disks because hard disks literally have to wait for a disk to spin into the right position to read or write data!  These persistent memory stores are like the computer's "long-term" memory.
 
-<img src="http://www.oceantechonline.com/ wp-content/uploads/2013/04/hard-drive1.png" alt="hard disk drive" width="25%">
+<img src="http://www.oceantechonline.com/wp-content/uploads/2013/04/hard-drive1.png" alt="hard disk drive" width="25%">
 *a hard disk drive*
 
 Some kinds of memory clear their information when the computer is turned off. The example talked about most often is RAM, which stands for "random access memory."  That's the computer's "short-term memory." It's faster for a computer to access information from RAM than from either a hard disk drive or ssd.
 
-<img src="http://www.nemixcorp.com/ media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/8/184_pin_eccx2-a.jpg" width="30%">
+<img src="http://www.nemixcorp.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/8/184_pin_eccx2-a.jpg" width="30%">
 *sticks of RAM*
 
 <details>
@@ -226,7 +226,7 @@ When you create a variable, some amount of space in memory is reserved for that 
 
 Processors perform all of the operations that take place within your computer.  The processor is the "brain" of the computer!
 
-<img src="https://blazotech.files.wordpress.com/ 2011/05/1298865422-79.jpg" width="25%"> 
+<img src="https://blazotech.files.wordpress.com/2011/05/1298865422-79.jpg" width="25%"> 
 *a processor*
 
 
@@ -249,7 +249,7 @@ The number of bits a processor can work on at one time is related to its "word s
 
 Processors act on data stored in memory and follow instructions stored in memory. Where that information is stored has an impact on how quickly the processor can access and act on it.
 
-[chart of memory types: size, cost, and access speed](https://cloud.githubusercontent.com/assets/3254910/12181035/b55fae34-b534-11e5-8f86-18b111d0b3ef.png)  
+![chart of memory types: size, cost, and access speed](https://cloud.githubusercontent.com/assets/3254910/12181035/b55fae34-b534-11e5-8f86-18b111d0b3ef.png)  
 
 
 
@@ -340,7 +340,7 @@ function main(){
 
 C is a "compiled language."   Compiling translates code from a higher-level language into a lower-level language, usually into an assembly language that can be run directly by the processor. Programming in a compiled language requires an extra step between writing and running code; you have to use a program called a compiler to compile your code before running it.  This creates extra delay, but the compiled version of the code runs fast because all the instructions are exactly as the processor expects. 
 
-JavaScript and Ruby are "interpreted languages." For interpreted languages, the source code still has to be translated so the computer can run it.  However, the source code is translated a little at a time as it's run, instead of all at once before it is run.  Also, the code isn't translated directly all the way down to the machine code level. It's translated to an intermediate format and then run in a virtual machine -- a simulated computer within the actual computer. The virtual machine has precompiled chunks of code that map to assembly code.  
+JavaScript and Ruby are "interpreted languages." For interpreted languages, the source code still has to be translated so the computer can run it.  However, the source code is translated a little at a time as it's run, instead of all at once before it is run.  Also, the code isn't translated directly all the way down to the machine code level. It's translated to an intermediate format and then run in a virtual machine -- a simulated computer within the actual computer. The virtual machine has precompiled chunks of code that map to assembly code.  The way an interpreter is written can have a big impact on how a language works -- this is why we have variable hoisting in JavaScript, for example!
 
 Programmers working with compiled languages have to use different compilers for the different systems they work on - Windows, Ubuntu, and OS X, for example. They have to consciously find and use the correct compiler.   When working with interpreted languages, the same code can run on many systems. The effort of translating that code to machine language falls to the virtual machine, where the programmer doesn't have to worry about it at all.
 
