@@ -53,7 +53,7 @@ https://www.recurse.com/blog/7-understanding-c-by-learning-assembly
 - Define "high-level" and "low-level" in a development context. 
 
 
-## Computers 
+## Basic Parts of Computers 
 
 Modern computers take in instructions and data and perform calculations on the data according to the instructions.  To accomplish this, computers have four basic parts:
 
@@ -72,7 +72,7 @@ You're already familiar with a few input and output devices. If you've shopped f
 
 
 
-### Bits, Binary Notation, and Encoding
+## Bits, Binary Notation, and Encoding
 
 Let's look at **how the computer "sees" and stores information**.
 
@@ -96,7 +96,7 @@ Pair up for 1 minute and discuss:
 Because bits don't hold much information each, programmers think about them in groups.  "Bytes" are groups of 8 bits, like `01000111` and `01000001`.
 
 
-####Information Encoding
+###Information Encoding
 
 So how many bits would it take to tell someone your birthday? Or what color each pixel in an image should be? Or what  letter should appear on your website next? These are the basic questions behind "encoding." One bit isn't enough, but text and numbers can be encoded in a computer as *patterns* of binary digits.  You may have heard of ASCII encoding, often used for ASCII art:
 
@@ -113,7 +113,7 @@ ASCII encoding uses seven bits to represent each character. That only allows for
 
 ![ASCII encoding table](http://web.alfredstate.edu/weimandn/miscellaneous/ascii/ASCII%20Conversion%20Chart.gif)
 
-#####Hexadecimal Notation
+####Hexadecimal Notation
 
 The ASCII table above also has a column for the HEX or "hexadecimal" value associated with each character. The digits used for hexadecimal notation are [`0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `A`, `B`, `C`, `D`, `E`] which correspond to decimal values of 0 through 15. 
 
@@ -298,7 +298,7 @@ RETQ
 <!--Can you guess what the code is doing?  The %rbp, %rsp, and %eax are registers - data storage locations directly in the processor. It's very fast for a computer to access the processor's registers, and they usually store the operands for an arithmetic or logic operation being carried out. The %rbp and %rsp registers have special purposes; they help the computer keep track of where in the call stack the current operations are being carried out (we won't go into this too much, but it's the basis for how control flow works).-->
 
 
-Assembly languages are basically the lowest level languages possible.  Below is some very similar code expressed in a programming language called C. C came after assembly languages and was specifically designed to be easier for humans to read. It's a higher-level programming language than assembly, but it's still possible to translate it pretty directly to processor instructions. 
+Assembly languages are basically the lowest level languages possible.  Below is some very similar code expressed in a programming language called C. 
 
 ```c
 int main(){
@@ -319,32 +319,32 @@ Line by line, what do you think is happening in the C code sample above?
   `x` is an integer, and `main` is a function. In C, we specify the "return type" of a function, which is why it's defined `int main` instead of `def main` or `function main`.
 </details> 
 
+### Compiled Languages
 
-**Static and Dynamic Typing**
+C came after assembly languages and was specifically designed to be easier for humans to read. It's a higher-level programming language than assembly, but it's still possible to translate it pretty directly to processor instructions. In fact, C is translated into assembly before it's run. This means C is a "compiled language."   Compiling translates code from a higher-level language into a lower-level language, usually into an assembly language that can be run directly by the processor. Programming in a compiled language requires an extra step between writing and running code; you have to use a program called a compiler to compile your code before running it.  This creates extra delay, but the compiled version of the code runs fast because all the instructions are exactly as the processor expects. 
 
-C is a statically typed language, meaning it makes sure types match (for operations like "hello" + 5) when the code is compiled. If you tried to compile a C file with `"hello" + 5` in it, the compiling step would give you an error. Most statically types languages make you specify the type of a variable and do not allow you to change it. Languages with dynamic typing only check types at runtime.  So in Ruby you'd get `TypeError: no implicit conversion of Fixnum into String` when you tried to *run* the code. 
+One popular compiled language used in web development is Java, which compiles to a special "bytecode" instead of to assembly. 
 
-Here's one way that C function might look in JavaScript:
-
-```js
-function main(){
-  var x = 8;
-  return 0;
-}
-```
-
-<details><summary>Is JavaScript typing static or dynamic?</summary>Dynamic!</details>
-
-
-## Compilers and Interpreters
-
-C is a "compiled language."   Compiling translates code from a higher-level language into a lower-level language, usually into an assembly language that can be run directly by the processor. Programming in a compiled language requires an extra step between writing and running code; you have to use a program called a compiler to compile your code before running it.  This creates extra delay, but the compiled version of the code runs fast because all the instructions are exactly as the processor expects. 
+### Interpreted Languages
 
 JavaScript and Ruby are "interpreted languages." For interpreted languages, the source code still has to be translated so the computer can run it.  However, the source code is translated a little at a time as it's run, instead of all at once before it is run.  Also, the code isn't translated directly all the way down to the machine code level. It's translated to an intermediate format and then run in a virtual machine -- a simulated computer within the actual computer. The virtual machine has precompiled chunks of code that map to assembly code.  The way an interpreter is written can have a big impact on how a language works -- this is why we have variable hoisting in JavaScript, for example!
 
 Programmers working with compiled languages have to use different compilers for the different systems they work on - Windows, Ubuntu, and OS X, for example. They have to consciously find and use the correct compiler.   When working with interpreted languages, the same code can run on many systems. The effort of translating that code to machine language falls to the virtual machine, where the programmer doesn't have to worry about it at all.
 
-One popular compiled language used in web development is Java, which compiles to a special "bytecode" instead of to assembly. For more information on compiled and interpreted languages, check out the wikipedia articles on each!
+For more information on compiled and interpreted languages, check out the wikipedia articles on each!
+
+## Static and Dynamic Typing
+
+C is a statically typed language, meaning it makes sure types match (for operations like "hello" + 5) when the code is compiled. If you tried to compile a C file with `"hello" + 5` in it, the compiling step would give you an error. Most statically types languages make you specify the type of a variable and do not allow you to change it. Languages with dynamic typing only check types at runtime.  So in Ruby you'd get `TypeError: no implicit conversion of Fixnum into String` when you tried to *run* the code. 
+
+Here's one way that C function from before might look in Ruby:
+
+```ruby
+def main
+  x = 8
+  0
+end
+```
 
 
 ## Practice
@@ -360,4 +360,4 @@ One popular compiled language used in web development is Java, which compiles to
 
 1. Does JavaScript have "static typing" or "dynamic typing"? How do you explain the fact that in JavaScript "hello" + 5 is "hello5"?
 
-1. Is JavaScript a "compiled language" or an "interpreted language"? What about Ruby?
+1. Is JavaScript a "compiled language" or an "interpreted language"? What about Ruby?  What does this mean for us as JavaScript and Ruby developers?
