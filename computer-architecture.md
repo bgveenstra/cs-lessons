@@ -207,7 +207,7 @@ Most modern personal computer hard drives can store hundreds of gigabytes or eve
 
 When you create a variable, some amount of space in memory is reserved for that variable, a place in the memory "city" where that information can live.  This is called memory allocation. When a variable is no longer needed, the space should be freed; this is called memory deallocation. Most high-level programming languages handle memory allocation and deallocation for us. 
 
-<!--> Programming lanaguges that automatically handle getting rid of old data (for instance, after it goes out of scope) are doing "garbage collection" for us.  -->
+<!-- > Programming lanaguges that automatically handle getting rid of old data (for instance, after it goes out of scope) are doing "garbage collection" for us.  -->
 
 <!-- > <details>-->
 <!-- > <summary>Is JavaScript garbage collected?</summary>-->
