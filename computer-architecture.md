@@ -1,4 +1,3 @@
-
 ---
 title: Computer Architecture
 type: lesson
@@ -39,8 +38,8 @@ https://www.recurse.com/blog/7-understanding-c-by-learning-assembly
 *After this lesson, students will be able to:*
 
 - Describe how computers store and process information.   
-- Manipulate binary data.   
-- Describe how programs are internally converted to instructions that a computer can carry out.   
+- Explain how data is encoded in binary or hex formats and where these formats are used. 
+- Distinguish between compilers and interpreters, and describe how each converts programs into instructions that a computer can carry out.
 - Use appropriate technical terms for categories of programming languages, and apply these terms to JavaScript and Ruby.  
 
 ### Preparation
@@ -49,7 +48,7 @@ https://www.recurse.com/blog/7-understanding-c-by-learning-assembly
 - Predict the result of logical operations (AND, NOT, OR) on boolean values. 
 - Create and run programs in JavaScript or Ruby. 
 - Distinguish among different data types.
-- Define "high-level" and "low-level" programming languages and give examples of each. 
+- Define "high-level" and "low-level" in a development context. 
 
 
 ## Computers 
@@ -71,13 +70,13 @@ You're already familiar with a few input and output devices. If you've shopped f
 
 
 
-### Bits and Binary Notation
+### Bits, Binary Notation, and Encoding
 
 Let's look at **how the computer "sees" and stores information**.
 
 Computers store information in binary notation, as series of `1`s and `0`s called bits.  Think about what how much information one bit can hold.  
 
-Pair up for 30 seconds and discuss: 
+Pair up for 1 minute and discuss: 
 
 1. ... would you be able to tell someone whether you walked to class this morning with only bit (one `0` or `1`)? 
 
@@ -92,34 +91,47 @@ Pair up for 30 seconds and discuss:
 </details>   
 
 
-Because bits don't hold much information, programmers think about them in groups.  "Bytes" are groups of 8 bits, like `01000111` and `01000001`.
+Because bits don't hold much information each, programmers think about them in groups.  "Bytes" are groups of 8 bits, like `01000111` and `01000001`.
 
-> <details> 
->   <summary>How many different combinations of `1`s and `0`s are possible in a byte?</summary>
->   <p> 2<sup>8</sup>, or 256</p>
-> </details> 
 
-**Bonus: Information Encoding**
+####Information Encoding
 
-ASCII encoding uses seven bits to represent each character. That only allows for 128 different codes, meaning 128 different characters. Digits and English letters take up half that!  Because of ASCII's limited range, it's been replaced by encodings that can use more bits to represent each character, like UTF-8 (which you've probably written many times in your HTML - `<meta charset="UTF-8">`).  UTF-8 can encode languages that aren't English! Yay!
+So how many bits would it take to tell someone your birthday? Or what color each pixel in an image should be? Or what  letter should appear on your website next? These are the basic questions behind encoding. You may have heard of ASCII encoding, often used for ASCII art:
+
+```
+  '___'
+  ( O.O)
+/(,,,,,)      // definitely an owl
+   ^ ^
+   
+```
+
+ASCII encoding uses seven bits to represent each character. That only allows for 128 different codes, meaning 128 different characters. Digits and English letters take up half that! Punctuation marks, whitespace, and special control characters are most of the rest.  It's not worthwhile to memorize ASCII encodings, but the table below is numbered in our normal decimal notation. It can give you a good idea how to count in binary notation and in another notation called "hexadecimal" or "hex" for short.
+
 
 ![ASCII encoding table](http://web.alfredstate.edu/weimandn/miscellaneous/ascii/ASCII%20Conversion%20Chart.gif)
 
-
-**Bonus: Hexadecimal Notation**
+#####Hexadecimal Notation
 
 The ASCII table above also has a column for the HEX or "hexadecimal" value associated with each character. The digits used for hexadecimal notation are [`0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `A`, `B`, `C`, `D`, `E`] which correspond to decimal values of 0 through 15. 
 
-
 <details>
-<summary>Where have you seen hex values used before?</summary>
-<p>One possibility is for hex color values in CSS</p>
-```css
-body {
-	color: "#ED86B4";
-}
-```
+	<summary>Where have you seen hex values used before?</summary>
+	<p>One possibility is for hex color values in CSS:</p>
+	```css
+	body {
+		color: "#ED86B4";
+	}
+	```
 </details>
+
+
+
+128 different codes aren't nearly enough for all of the characters on modern websites. Because of ASCII's limited range, it's been replaced by encodings that can use more bits to represent each character, like UTF-8. You've probably mentioned UTF-8 many times in your HTML document head tags: `<meta charset="UTF-8">`.  UTF-8 uses variable numbers of bits to encode different characters. So in UTF-8, "J" is `&#x4A;` (in hexadecimal), and  "&#x26C5;" is `&#x26C5;`.  With the extra bits, it can encode fun symbols (cool) but also languages that aren't English (essential!).
+
+
+
+**Bonus: Numerical "Bases"**
 
 Binary, hexadecimal, and our normal decimal representations are all just different ways to look at the same numbers you're already familiar with.  If you'd like to learn more about this topic, it'll help to know that our normal decimal numbers are "base 10," binary numbers are "base 2," and hexadecimal numbers are "base 16." Octal numbers are less common. 
 
@@ -128,23 +140,31 @@ Binary, hexadecimal, and our normal decimal representations are all just differe
 <p>Octal numbers are base 8. The "base" of a number system tells how many digits it has. Looking at the chart, you'll notice the OCT column only uses the digits 0 through 7 -- 8 digits!</p>
 </details>
 
-> #### Practice with Binary Numbers
+<!--> #### Practice with Binary Numbers-->
 
 
-> Bit manipulation describes operations that act on binary numbers.  You can perform common arithmetic on binary numbers. There's also a specail name for "bit shifting" values left or right. This either adds a `0` at the end of the number for left shift ( `<<`), which is equivalent to multiplying by 2, or removes the last binary digit for right shift (`>>`), which is almost like diving by two (why almost?).  
+<!--> Bit manipulation describes operations that act on binary numbers.  You can perform common arithmetic on binary numbers. There's also a specail name for "bit shifting" values left or right. This either adds a `0` at the end of the number for left shift ( `<<`), which is equivalent to multiplying by 2, or removes the last binary digit for right shift (`>>`), which is almost like diving by two (why almost?).  -->
 
-> As sequences of 0s and 1s, binary numbers can also be acted on by logical operators, if you consider each `1` like a `true` and each `0` like a `false`.  For example, `NOT 101` would give `010`.   `1011 AND 1101` would give `1001`. 
+<!--> As sequences of 0s and 1s, binary numbers can also be acted on by logical operators, if you consider each `1` like a `true` and each `0` like a `false`.  For example, `NOT 101` would give `010`.   `1011 AND 1101` would give `1001`. -->
 
-> <details> 
->  <summary>What other operations do you think can act on binary numbers?</summary>
->   <p> We've seen `AND` and `OR`.</p>
-> </details> 
+<!--> <details> -->
+<!-->  <summary>What other operations do you think can act on binary numbers?</summary>-->
+<!-->   <p> We've seen `AND` and `OR`.</p>-->
+<!--> </details> -->
 
-> A boolean operator you may not know of is `XOR`. It's a lot like `OR`, except `a XOR b` is only true if exactly one of a or b is true.  If both a and b are true, or if both are false, `a XOR b` is false.   So `1010 XOR 0011` would give `1001`.
+<!--> A boolean operator you may not know of is `XOR`. It's a lot like `OR`, except `a XOR b` is only true if exactly one of a or b is true.  If both a and b are true, or if both are false, `a XOR b` is false.   So `1010 XOR 0011` would give `1001`.-->
+
+
+
+
+<!--> <details> -->
+<!-->   <summary>How many different combinations of `1`s and `0`s are possible in a byte?</summary>-->
+<!-->   <p> 2<sup>8</sup>, or 256</p>-->
+<!--> </details> -->
 
 ##Memory
 
-All of the bits of data and instructions your computer uses are stored in what's called the computer's "memory."  That's important to realize - every peice of information used in calculations, and the instructions the computer uses for the calculations themselves, are stored in the computer's memory. 
+All of the bits of data and instructions your computer uses are stored in what's called the computer's "memory."  That's important to realize - every piece of information used in calculations, and the instructions the computer uses for the calculations themselves, are stored in the computer's memory. 
 
 You can think of your computer's memory as a giant city - in fact, we refer to the location in memory where some information is stored as that information's "memory address."
 
@@ -271,12 +291,12 @@ POPQ     %rbp
 RETQ
 ```
 
-> The first two lines keep track of where the funciton starts. Then the next line sets %eax to 0.  Finally, the last two lines cause the processor to return to whatever it was doing.
+<!--> The first two lines keep track of where the funciton starts. Then the next line sets %eax to 0.  Finally, the last two lines cause the processor to return to whatever it was doing.-->
 
-Can you guess what the code is doing?  The %rbp, %rsp, and %eax are registers - data storage locations directly in the processor. It's very fast for a computer to access the processor's registers, and they usually store the operands for an arithmetic or logic operation being carried out. The %rbp and %rsp registers have special purposes; they help the computer keep track of where in the call stack the current operations are being carried out (we won't go into this too much, but it's the basis for how control flow works).
+<!--Can you guess what the code is doing?  The %rbp, %rsp, and %eax are registers - data storage locations directly in the processor. It's very fast for a computer to access the processor's registers, and they usually store the operands for an arithmetic or logic operation being carried out. The %rbp and %rsp registers have special purposes; they help the computer keep track of where in the call stack the current operations are being carried out (we won't go into this too much, but it's the basis for how control flow works).-->
 
 
-Assembly languages are basically the lowest level languages possible.  Here's very similar code expressed in a programming language called C. C came after assembly languages and was specifically designed to be easier for humans to read. It's a higher-level programming language than assembly, but it's still possible to translate pretty directly to processor instructions. 
+Assembly languages are basically the lowest level languages possible.  Here's very similar code expressed in a programming language called C. C came after assembly languages and was specifically designed to be easier for humans to read. It's a higher-level programming language than assembly, but it's still possible to translate it pretty directly to processor instructions. 
 
 ```c
 int main(){
@@ -328,9 +348,9 @@ One popular compiled language used in web development is Java, which compiles to
 ## Practice
 
 
-1. How many values can you represent with one bit?  One decimal digit? One letter?  
+1. How many different values can you represent with one bit?  One decimal digit? One letter?  
 
-1. How many values can you represent with a sequence of eight bits?  How about with a sequence of eight letters?
+1. How many different values can you represent with a byte?  How about with a sequence of eight letters?
 
 1. What do we mean by "high-level" and "low-level" languages? Give an example of each. 
 
