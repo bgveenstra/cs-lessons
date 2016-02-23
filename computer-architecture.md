@@ -1,7 +1,7 @@
 ---
 title: Computer Architecture
 type: lesson
-duration: "1:15"
+duration: "1:25"
 creator:
     name: 
     city: SF
@@ -36,6 +36,8 @@ https://www.recurse.com/blog/7-understanding-c-by-learning-assembly
 
 # Computer Architecture
 
+## Intro (5 minutes)
+
 ### Objectives
 *After this lesson, students will be able to:*
 
@@ -53,7 +55,7 @@ https://www.recurse.com/blog/7-understanding-c-by-learning-assembly
 - Define "high-level" and "low-level" in a development context. 
 
 
-## Basic Parts of Computers 
+## Basic Parts of Computers
 
 Modern computers take in instructions and data and perform calculations on the data according to the instructions.  To accomplish this, computers have four basic parts:
 
@@ -68,11 +70,7 @@ Modern computers take in instructions and data and perform calculations on the d
 You're already familiar with a few input and output devices. If you've shopped for a computer recently, you've also heard information about computers' memory and processor loadouts. 
 
 
-
-
-
-
-## Bits, Binary Notation, and Encoding
+## Bits, Binary Notation, and Encoding (10 minutes)
 
 Let's look at **how the computer "sees" and stores information**.
 
@@ -96,7 +94,7 @@ Pair up for 1 minute and discuss:
 Because bits don't hold much information each, programmers think about them in groups.  "Bytes" are groups of 8 bits, like `01000111` and `01000001`.
 
 
-###Information Encoding
+###Information Encoding  (10 minutes)
 
 So how many bits would it take to tell someone your birthday? Or what color each pixel in an image should be? Or what  letter should appear on your website next? These are the basic questions behind "encoding." One bit isn't enough, but text and numbers can be encoded in a computer as *patterns* of binary digits.  You may have heard of ASCII encoding, often used for ASCII art:
 
@@ -113,7 +111,7 @@ ASCII encoding uses seven bits to represent each character. That only allows for
 
 ![ASCII encoding table](http://web.alfredstate.edu/weimandn/miscellaneous/ascii/ASCII%20Conversion%20Chart.gif)
 
-####Hexadecimal Notation
+####Optional: Hexadecimal Notation
 
 The ASCII table above also has a column for the HEX or "hexadecimal" value associated with each character. The digits used for hexadecimal notation are [`0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `A`, `B`, `C`, `D`, `E`] which correspond to decimal values of 0 through 15. 
 
@@ -127,7 +125,7 @@ The ASCII table above also has a column for the HEX or "hexadecimal" value assoc
 	```
 </details>
 
-
+### ASCII vs UTF-8
 
 128 different codes aren't nearly enough for all of the characters on modern websites. Because of ASCII's limited range, it's been replaced by encodings that can use more bits to represent each character, like UTF-8. You've probably mentioned UTF-8 many times in your HTML document head tags: `<meta charset="UTF-8">`.  UTF-8 uses variable numbers of bits to encode different characters. So in UTF-8, "J" is `&#x4A;` (in hexadecimal), and  "&#x266b;" is `&#x266b;`.  With the freedom yo use extra bits, UTF-8 can encode symbols (cool!) but also languages that aren't English (essential!).
 
@@ -164,7 +162,7 @@ The ASCII table above also has a column for the HEX or "hexadecimal" value assoc
 <!-- >   <p> 2<sup>8</sup>, or 256</p>-->
 <!-- > </details> -->
 
-##Memory
+##Memory (5 minutes)
 
 All of the bits of data and instructions your computer uses are stored in what's called the computer's "memory."  That's important to realize - every piece of information used in calculations, and the instructions the computer uses for the calculations themselves, are stored in the computer's memory. 
 
@@ -175,30 +173,29 @@ You can think of your computer's memory as a giant city - in fact, we refer to t
 Some information in a computer's memory persists after the computer is turned off; this is mostly stored on the hard disk drive or ssd. Solid state disks (SSDs) are faster than hard disks because hard disks literally have to wait for a disk to spin into the right position to read or write data!  These persistent memory stores are like the computer's "long-term" memory.
 
 <img src="http://www.oceantechonline.com/wp-content/uploads/2013/04/hard-drive1.png" alt="hard disk drive" width="25%">
-*a hard disk drive*
+*a hard disk drive - data stored here persists when the computer is restarted*
 
 Some kinds of memory clear their information when the computer is turned off. The example talked about most often is RAM, which stands for "random access memory."  That's the computer's "short-term memory." It's faster for a computer to access information from RAM than from either a hard disk drive or ssd.
 
 <img src="http://www.nemixcorp.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/8/184_pin_eccx2-a.jpg" width="30%">
-*sticks of RAM*
+*sticks of RAM - not persistant memory*
 
-<details>
-<summary> Do you think the following are stored "on disk" or in RAM: the code for your computer's operating system, an array you create in the Chrome developer tools console, a file you download?</summary>
-<ul>
-<li>The code for your operating system had better persist after you restart your computer! That should be on disk.</li>
-<li>An array you create in the Chrome developer tools won't even be there if you restart Chrome. It must be stored in RAM. </li>
-<li>A file you download will be there the next time you start your computer, so it must be stored on disk. </li>
-</ul>
+<!--<details>-->
+<!--<summary> Do you think the following are stored "on disk" or in RAM: the code for your computer's operating system, an array you create in the Chrome developer tools console, a file you download?</summary>-->
+<!--<ul>-->
+<!--<li>The code for your operating system had better persist after you restart your computer! That should be on disk.</li>-->
+<!--<li>An array you create in the Chrome developer tools won't even be there if you restart Chrome. It must be stored in RAM. </li>-->
+<!--<li>A file you download will be there the next time you start your computer, so it must be stored on disk. </li>-->
+<!--</ul>-->
 
-</details>
+<!--</details>-->
 
-### Units of Memory
 
 Most modern personal computer hard drives can store hundreds of gigabytes or even a few terabytes, and most RAM is sold in 4-, 8-, or 16-gigabyte "sticks."  
 
-**Bonus: Memory Size Requriements**
+**Memory Size Requriements**
 	
-	* A single character like "a" or "&#x266b;" can be stored in a few bytes of memory. 
+	* A single character like "J" or "&#x266b;" can be stored in a few bytes of memory. 
 	* A small text file is often a few kilobytes long.  
 	* An average music MP3 file would be a few megabytes.
 	* DVDs are usually a few gigabytes.  
@@ -206,7 +203,7 @@ Most modern personal computer hard drives can store hundreds of gigabytes or eve
 	* A petabyte is about three month's worth of tweets - for everyone using twitter!  
 
 
-### The Computer's View of Memory
+### Memory Allocation and Deallocation
 
 When you create a variable, some amount of space in memory is reserved for that variable, a place in the memory "city" where that information can live.  This is called memory allocation. When a variable is no longer needed, the space should be freed; this is called memory deallocation. Most high-level programming languages handle memory allocation and deallocation for us. 
 
@@ -221,7 +218,7 @@ When you create a variable, some amount of space in memory is reserved for that 
 
 
 
-## Processors
+## Processors (10 minutes)
 
 
 Processors perform all of the operations that take place within your computer.  The processor is the "brain" of the computer!
@@ -252,17 +249,11 @@ Processors act on data stored in memory and follow instructions stored in memory
 ![chart of memory types: size, cost, and access speed](https://cloud.githubusercontent.com/assets/3254910/12181035/b55fae34-b534-11e5-8f86-18b111d0b3ef.png)  
 
 
-
-
 ### Processes and Threads 
 
 Each instance of a running program is called a process; a processor can only work on one process at once. To see a list of processes running on your computer, enter the `top` command in your terminal. Seriously, do it now.
 
-A single processor can only work on one thing at a time. Users want to be able to do more than one thing at a time with their computers. There are a few approaches to fixing this problem. First, the processor changes which process it's working on avoid any downtime. If one process needs to wait for user input, for example, the computer will work on a different process for a while to fill that time.  Many computers also have "dual" or "quad" core processors, which is like having 2 or 4 processors. Most modern architectures also allow for threading, where process are divided into smaller "threads", individual tasks that the processor focuses on for a short amount of time.
-
-
-
-## Break!
+A single processor can only work on one thing at a time. Users want to be able to do more than one thing at a time with their computers! There are a few approaches to fixing this problem.  A processor changes which process it's working on avoid any downtime. If one process needs to wait for user input, for example, the computer will work on a different process for a while to fill that time.  Many computers also have "dual" or "quad" core processors, which is like having 2 or 4 processors. Most modern architectures also allow for threading, where process are divided into smaller "threads", individual tasks that the processor focuses on for a short amount of time.
 
 
 ## Interpreters and Compilers
@@ -270,7 +261,7 @@ A single processor can only work on one thing at a time. Users want to be able t
 If the processor works with 0s and 1s, how does it know what to do when we give it a line of code like `var speed = 50;`? The code we write has to be translated to instructions the processor can carry out. 
 
 
-### Low-level Programming Languages
+### Low-level Programming Languages (5 minutes)
 
 A lot of work of computer science since the mid-1900s has focused on letting humans write human-readable code.  Assembly languages are very low-level programming languages. This means it's very close to machine code; it's a slightly more readable layer just on top of 1s and 0s. There is usually exactly one command in assembly for every possible operation the processor can do. 
 
@@ -293,7 +284,7 @@ POPQ     %rbp
 RETQ
 ```
 
-<!-- > The first two lines keep track of where the funciton starts. Then the next line sets %eax to 0.  Finally, the last two lines cause the processor to return to whatever it was doing.-->
+The first two lines keep track of where the funciton starts. Then the next line sets the value of the %eax processor register to 0.  Finally, the last two lines cause the processor to return.
 
 <!--Can you guess what the code is doing?  The %rbp, %rsp, and %eax are registers - data storage locations directly in the processor. It's very fast for a computer to access the processor's registers, and they usually store the operands for an arithmetic or logic operation being carried out. The %rbp and %rsp registers have special purposes; they help the computer keep track of where in the call stack the current operations are being carried out (we won't go into this too much, but it's the basis for how control flow works).-->
 
@@ -311,21 +302,21 @@ Line by line, what do you think is happening in the C code sample above?
 
 <details>
   <summary>What do you think `int` means?</summary>
-  In C, `int` stands for "integer."
+  In C, `int` stands for "integer." It specifies the type of the new `x` variable.
 </details> 
 
 <details>
   <summary>What data types are `x` and `main`?</summary>
-  `x` is an integer, and `main` is a function. In C, we specify the "return type" of a function, which is why it's defined `int main` instead of `def main` or `function main`.
+  `x` is an integer, and `main` is a function. In C, we specify the "return type" of a function, which is why it's defined as `int main` instead of `def main` or `function main`.
 </details> 
 
-### Compiled Languages
+### Compiled Languages (10 minutes)
 
 C came after assembly languages and was specifically designed to be easier for humans to read. It's a higher-level programming language than assembly, but it's still possible to translate it pretty directly to processor instructions. In fact, C is translated into assembly before it's run. This means C is a "compiled language."   Compiling translates code from a higher-level language into a lower-level language, usually into an assembly language that can be run directly by the processor. Programming in a compiled language requires an extra step between writing and running code; you have to use a program called a compiler to compile your code before running it.  This creates extra delay, but the compiled version of the code runs fast because all the instructions are exactly as the processor expects. 
 
 One popular compiled language used in web development is Java, which compiles to a special "bytecode" instead of to assembly. 
 
-### Interpreted Languages
+### Interpreted Languages (10 minutes)
 
 JavaScript and Ruby are "interpreted languages." For interpreted languages, the source code still has to be translated so the computer can run it.  However, the source code is translated a little at a time as it's run, instead of all at once before it is run.  Also, the code isn't translated directly all the way down to the machine code level. It's translated to an intermediate format and then run in a virtual machine -- a simulated computer within the actual computer. The virtual machine has precompiled chunks of code that map to assembly code.  The way an interpreter is written can have a big impact on how a language works -- this is why we have variable hoisting in JavaScript, for example!
 
@@ -333,11 +324,11 @@ Programmers working with compiled languages have to use different compilers for 
 
 For more information on compiled and interpreted languages, check out the wikipedia articles on each!
 
-## Static and Dynamic Typing
+## Static and Dynamic Typing (5 minutes)
 
-C is a statically typed language, meaning it makes sure types match (for operations like "hello" + 5) when the code is compiled. If you tried to compile a C file with `"hello" + 5` in it, the compiling step would give you an error. Most statically types languages make you specify the type of a variable and do not allow you to change it. Languages with dynamic typing only check types at runtime.  So in Ruby you'd get `TypeError: no implicit conversion of Fixnum into String` when you tried to *run* the code. 
+C is a statically typed language, meaning it makes sure types match (for operations like "hello" + 5) when the code is compiled. If you tried to compile a C file with `"hello" + 5` in it, the compiling step would give you an error. You wouldn't even be able to get to the stage where you try to run it.  Most statically types languages make you specify the type of a variable and do not allow you to change it. Languages with dynamic typing only check types at runtime.  So in Ruby you'd get `TypeError: no implicit conversion of Fixnum into String` when you tried to *run* the code. 
 
-Here's one way that C function from before might look in Ruby:
+Here's one way that C function from before might be written in Ruby:
 
 ```ruby
 def main
@@ -347,7 +338,7 @@ end
 ```
 
 
-## Practice
+## Practice (20 minutes)
 
 
 1. How many different values can you represent with one bit?  One decimal digit? One letter?  
@@ -362,4 +353,4 @@ end
 
 1. Is JavaScript a "compiled language" or an "interpreted language"? What about Ruby?  What does this mean for us as JavaScript and Ruby developers?
 
-1. How might you explain the fact that in JavaScript "hello" + 5 is "hello5"?
+1. How might you explain the fact that in JavaScript `"hello" + 5` is `"hello5"`?
