@@ -1,7 +1,7 @@
 ---
 title: Introduction to Algorithms
 type: lesson
-duration: "1:15"
+duration: "1:20"
 creator:
     name:
     city: SF
