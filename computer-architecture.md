@@ -91,7 +91,9 @@ Pair up for 1 minute and discuss:
 </details>   
 
 
-Because bits don't hold much information each, programmers think about them in groups.  "Bytes" are groups of 8 bits, like `01000111` and `01000001`.
+Because bits don't hold much information each, programmers think about them in groups.  "Bytes" are groups of 8 bits, like `01000111` and `01000001`.  Eight bits can hold a number from 0 to 2<sup>8</sup>-1, which gives 256 distinct values.  
+
+<details><summary>Could you tell someone your birthday if you were allowed to use one byte?</summary><p>Still no! There are 365 possibilities (one for each possible date in the year), so you can't quite specify one date with just 8 bits.</p></details>
 
 
 ###Information Encoding  (10 minutes)
