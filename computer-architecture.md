@@ -43,7 +43,7 @@ https://www.recurse.com/blog/7-understanding-c-by-learning-assembly
 
 - Describe how computers store and process information.   
 - Explain how data is encoded in binary or hex formats and where these formats are used. 
-- Distinguish between compilers and interpreters, and describe how each converts programs into instructions that a computer can carry out.
+- Distinguish between compilers and interpreters, and describe how each converts human-readable programs into instructions that a computer can carry out.
 - Use appropriate technical terms for categories of programming languages, and apply these terms to JavaScript and Ruby.  
 
 ### Preparation
