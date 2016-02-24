@@ -387,44 +387,39 @@ Exponents answer "what do we get if we multiply b x times?", and logarithms answ
 <!--</details>-->
 
 
-<!--Cheatsheet-->
-<!--<table>-->
-<!--  <tr>-->
-<!--    <th>Recurrence</th>-->
-<!--    <th>Algorithm</th>-->
-<!--    <th>Big-Oh Solution</th>-->
-<!--  </tr>-->
-<!--  <tr>-->
-<!--    <th>T(n) = T(n/2) + O(1)</th>-->
-<!--    <th>Binary Search</th>-->
-<!--    <th>O(log(n))</th>-->
-<!--  </tr>-->
-<!--  <tr>-->
-<!--    <th>T(n) = T(n-1) + O(1)</th>-->
-<!--    <th>Factorial</th>-->
-<!--    <th>O(n)</th>-->
-<!--  </tr>-->
-  <!-- <tr> -->
-  <!--  <th>T(n) = 2T(n/2) + O(1)</th> -->
-  <!--  <th>tree traversal</th> -->
-  <!--  <th>O(n)</th> -->
-  <!-- </tr> -->
-<!--  <tr>-->
-<!--    <th>T(n) = 2T(n/2) + O(n)</th>-->
-<!--    <th>Mergesort</th>-->
-<!--    <th>O(n*log(n))</th>-->
-<!--  </tr>-->
-<!--  <tr>-->
-<!--    <th>T(n) = T(n-1) + O(n) </th>-->
-<!--    <th>bubble sort </th>-->
-<!--    <th>O(n<sup>2</sup>)</th>-->
-<!--  </tr>-->
-<!--  <tr>-->
-<!--    <th>T(n) = T(n-1) + T(n-2) + O(1)</th>-->
-<!--    <th>fibonacci</th>-->
-<!--    <th>O(2<sup>n</sup>)</th>-->
-<!--  </tr>-->
-<!--  </table>-->
+Cheatsheet
+<table>
+  <tr>
+    <th>Recurrence</th>
+    <th>Algorithm</th>
+    <th>Big-Oh Solution</th>
+  </tr>
+  <tr>
+    <th>T(n) = T(n/2) + O(1)</th>
+    <th>Binary Search</th>
+    <th>O(log(n))</th>
+  </tr>
+  <tr>
+    <th>T(n) = T(n-1) + O(1)</th>
+    <th>Factorial</th>
+    <th>O(n)</th>
+  </tr>
+  <tr>
+    <th>T(n) = 2T(n/2) + O(n)</th>
+    <th>Mergesort</th>
+    <th>O(n*log(n))</th>
+  </tr>
+  <tr>
+    <th>T(n) = T(n-1) + O(n) </th>
+    <th>bubble sort </th>
+    <th>O(n<sup>2</sup>)</th>
+  </tr>
+  <tr>
+    <th>T(n) = T(n-1) + T(n-2) + O(1)</th>
+    <th>fibonacci</th>
+    <th>O(2<sup>n</sup>)</th>
+  </tr>
+  </table>
 	                      	                    
 
 <!--####Recursion Trees (Drop!?!?!?!!!!!)-->
