@@ -10,6 +10,9 @@ competencies: Programming, Computer Science
 @TODO: separate recursion into different lesson, switch out example to largest sum of two numbers from two arrays, move search algorithms before big o, move commented out sections
 ---
 
+
+> Note: If you have the ability to do so in your schedule, move the introductory material into pre-reading.
+
 # Introduction to Algorithms 
 
 ## Introduction (10 minutes)
@@ -277,7 +280,7 @@ Now we want to find the time it takes to go from all n+1 possibilities down to j
 
 #####Reminder: Exponents and Logarithms
 
-Most people don't think about exponents and logarithms very much after high school math.  Remember, b<sup>x</sup> means b is multiplied by itself x times. So b<sup>3</sup> is b*b*b.  
+Most people don't think about exponents and logarithms very much after high school math.  Remember, b<sup>x</sup> means b is multiplied by itself x times. So b<sup>3</sup> is b\*b\*b.  
 
 <details><summary>What is 2<sup>4</sup>?</summary>2<sup>4</sup> = 2*2*2*2 = 16</details>
 
