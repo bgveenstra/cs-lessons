@@ -11,7 +11,7 @@ competencies: Programming, Computer Science
 ---
 
 
-> Note: If you have the ability to do so in your schedule, move the introductory material into pre-reading.
+> Note: If you have the ability to do so in your schedule, it'd probably help to move the introductory material into pre-reading.
 
 # Introduction to Algorithms 
 
@@ -80,7 +80,7 @@ Big O notation gives us a simplified way to talk about the  time and space requi
 
 If we tried to get a 100% accurate picture of how long an algorithm would take, the analysis required would be so complex it wouldn't be useful.  We'd basically have to use the algorithm, or run the function, and record how long it took. 
 
-So Big O notation makes step one above WAY easier by pretending computers are simpler than they actually are. Big O uses the RAM model of computation and assumes all computers ares simple "Random-Access Machines."  (Don't confuse this with Random Access Memory, the RAM memory inside actual computers.) This simplified model means that instead of answers like "This algorithm will do exactly 37 operations for each bit of data in the input, plus 45 to calculate an if statement, plus..." we get answers like "This algorithm is O(n)".  
+So Big O notation makes step one above WAY easier by pretending computers are simpler than they actually are. Big O uses the RAM model of computation and assumes all computers ares simple "Random-Access Machines."  (Don't confuse this with Random Access Memory, a kind of memory chips inside actual computers.) This simplified model means that instead of answers like "This algorithm will do exactly 37 operations for each bit of data in the input, plus 45 to evaluate the condition in an if statement, plus..." we get answers like "This algorithm is O(n)".  
 
 Big O notation usually looks like this:  O(1), O(log(n)), O(n), O(n*log(n)), O(n<sup>2</sup>), O(2<sup>n</sup>)...  where `n` is the size or number of inputs.  It's important to remember that Big O notation gives an upper limit for how long or how much space an algorithm could take. The idea is it's safer to overestimate how much time something could take than to underestimate. Still, we try to get estimates that are close to what time or space will actually be required.
 
@@ -95,6 +95,10 @@ To say an algorithm takes O(1) time means no matter how big the input(s) are, th
 We will consider all mathematical operations on normal-size numbers or characters O(1).  In Big O notation, these are **O(1)** operations: `+`, `-`, `*`, `/`, and `%`.  
 
 ```js
+function returnZero(){
+    return 0;
+}
+
 function add(a,b){
     return a+b;
 }
